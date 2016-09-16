@@ -1,5 +1,4 @@
 class RecommendationsController < ApplicationController
-
   def create
     Recommendation.create(recommendation_params)
     redirect_to :rating_path

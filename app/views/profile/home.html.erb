@@ -1,4 +1,4 @@
-<h1>Welcome to Yumoo, <%= @user %></h1>
+<h1>Welcome to Yumoo, <%= @user.username %></h1>
 
 <%= form_for mood_path do |f|%>
   <% @moods.each do |mood| %>
