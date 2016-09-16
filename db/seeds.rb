@@ -1,11 +1,34 @@
 def make_seeds
-  make_comments
+  make_users  
   make_foods
   make_moods
   make_recommendations
-  make_users
+  make_comments  
 end
 
+def make_users
+  User.create!(name: 'Nata', email: 'nata@aol.com', password: 'nnnnnn')
+  User.create!(name: 'Satu', email: 'satu@aol.com', password: 'ssssss')
+  User.create!(name: 'Paige', email: 'paige@aol.com', password: 'pppppp')
+  User.create!(name: 'Aehmet', email: 'ahhhmed@aol.com', password: 'aaaaaa')
+  User.create!(name: 'Dereck', email: 'nick@aol.com', password: 'dddddd')
+  User.create!(name: 'Natasha', email: 'natasha@aol.com', password: 'nnnnnn')
+  User.create!(name: 'SatuB', email: 'satub@aol.com', password: 'ssssss')
+  User.create!(name: 'PaigeL', email: 'paigeL@aol.com', password: 'pppppp')
+  User.create!(name: 'AehmetF', email: 'ahhhmedf@aol.com', password: 'aaaaaa')
+  User.create!(name: 'DereckF', email: 'nickf@aol.com', password: 'dddddd')
+  User.create!(name: 'Natali', email: 'natali@aol.com', password: 'nnnnnn')
+  User.create!(name: 'SatuQ', email: 'satuq@aol.com', password: 'ssssss')
+  User.create!(name: 'PaigeQ', email: 'paigeq@aol.com', password: 'pppppp')
+  User.create!(name: 'AehmetQ', email: 'ahhhmedq@aol.com', password: 'aaaaaa')
+  User.create!(name: 'DereckQ', email: 'nickq@aol.com', password: 'dddddd')
+  User.create!(name: 'Natasha@', email: 'natashaq@aol.com', password: 'nnnnnn')
+  User.create!(name: 'SatuBQ', email: 'satubq@aol.com', password: 'ssssss')
+  User.create!(name: 'PaigeLQ', email: 'paigelq@aol.com', password: 'pppppp')
+  User.create!(name: 'AehmetFQ', email: 'ahhhmedfq@aol.com', password: 'aaaaaa')
+  User.create!(name: 'DereckFQ', email: 'nickfq@aol.com', password: 'dddddd')
+  User.create!(name: 'DereckMQ', email: 'nickfmq@aol.com', password: 'dddddd')
+end
 
 def make_comments
   Comment.create!(content: 'Nah, cheese was too cheesy', user_id: 1, recommendation_id: 1)
@@ -16,27 +39,27 @@ end
 
 
 def make_foods
-    Food.create(name: 'Beef Au Poivre Empanadas', mood_id: 1)
-    Food.create(name: 'Mezcal Chipotle Infused BBQ Chicken', mood_id: 1)
-    Food.create(name: 'Mole Poblano', mood_id: 1)
-    Food.create(name: 'Nurse Ginger Green Juice', mood_id: 2)
-    Food.create(name: 'Power Breakfast', mood_id: 2)
-    Food.create(name: 'Chicken Noodle Soup', mood_id: 2)
-    Food.create(name: 'Power Breakfast', mood_id: 3)
-    Food.create(name: 'Samurai Matcha Bowl', mood_id: 3)
-    Food.create(name: 'Green Wonder', mood_id: 3)
-    Food.create(name: 'Nutella Smores', mood_id: 4)
-    Food.create(name: 'Lobster Cheese Fries', mood_id: 4)
-    Food.create(name: 'Bison Burger', mood_id: 4)
-    Food.create(name: 'Kale Ceasar Salad', mood_id: 5)
-    Food.create(name: 'Tuna Collard Green Wrap', mood_id: 5)
-    Food.create(name: 'Baby Spinach Salad with Cranberries and Almonds', mood_id: 5)
-    Food.create(name: 'Spicy Salmon Rolls', mood_id: 6)
-    Food.create(name: 'Salmon Sashimi', mood_id: 6)
-    Food.create(name: 'The Catena Malbec', mood_id: 7)
-    Food.create(name: 'La Marca Prosecco Champagne', mood_id: 7)
-    Food.create(name: 'Black Truffle Tagliolini with Lobster', mood_id: 8)
-    Food.create(name: 'Caviar Lobster Frittata', mood_id: 8)    
+    Food.create(name: 'Beef Au Poivre Empanadas')
+    Food.create(name: 'Mezcal Chipotle Infused BBQ Chicken')
+    Food.create(name: 'Mole Poblano')
+    Food.create(name: 'Nurse Ginger Green Juice')
+    Food.create(name: 'Power Breakfast')
+    Food.create(name: 'Chicken Noodle Soup')
+    Food.create(name: 'Power Breakfast')
+    Food.create(name: 'Samurai Matcha Bowl')
+    Food.create(name: 'Green Wonder')
+    Food.create(name: 'Nutella Smores')
+    Food.create(name: 'Lobster Cheese Fries')
+    Food.create(name: 'Bison Burger')
+    Food.create(name: 'Kale Ceasar Salad')
+    Food.create(name: 'Tuna Collard Green Wrap')
+    Food.create(name: 'Baby Spinach Salad with Cranberries and Almonds')
+    Food.create(name: 'Spicy Salmon Rolls')
+    Food.create(name: 'Salmon Sashimi')
+    Food.create(name: 'The Catena Malbec')
+    Food.create(name: 'La Marca Prosecco Champagne')
+    Food.create(name: 'Black Truffle Tagliolini with Lobster')
+    Food.create(name: 'Caviar Lobster Frittata')    
 end
 
 def make_moods
@@ -51,19 +74,10 @@ def make_moods
 end
 
 def make_recommendations
-  Recommendation.create(user_id: 1, food_id: 5, mood_id: 3)
-  Recommendation.create(user_id: 2, food_id: 3, mood_id: 5)
-  Recommendation.create(user_id: 3, food_id: 4, mood_id: 6)
-  Recommendation.create(user_id: 4, food_id: 2, mood_id: 1)
-  Recommendation.create(user_id: 5, food_id: 1, mood_id: 2)
+  20.times do |i|
+  Recommendation.create(user_id: i+1, food_id: i+1, mood_id: i+1, rating:(1..5).to_a.sample)
+  end
 end
 
-def make_users
-  User.create!(name: 'Nata', email: 'nata@aol.com')
-  User.create!(name: 'Satu', email: 'satu@aol.com')
-  User.create!(name: 'Paige', email: 'paige@aol.com')
-  User.create!(name: 'Aehmet', email: 'ahhhmed@aol.com')
-  User.create!(name: 'Dereck', email: 'nick@aol.com')
-end
 
 make_seeds
