@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916023012) do
-
-  create_table "comments", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "recommendation_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
+ActiveRecord::Schema.define(version: 20160916171616) do
 
   create_table "foods", force: :cascade do |t|
     t.string   "name"
@@ -30,6 +22,15 @@ ActiveRecord::Schema.define(version: 20160916023012) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "recommendation_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.float    "score",             default: 0.0
   end
 
   create_table "recommendations", force: :cascade do |t|

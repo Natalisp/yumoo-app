@@ -15,7 +15,5 @@ class ProfileController < ApplicationController
     @mood = Mood.find_by(id: params[:id])
     current_user.moods << @mood if @mood
     redirect_to root_path
-  end
-
-
+  end  
 end
