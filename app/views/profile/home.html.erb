@@ -1,3 +1,5 @@
-<% binding.pry %>
-<h1>Welcome to Yumoo!</h1>
-<!-- will we ask how they're feeling here or somewhere else? -->
+<h1>Welcome to Yumoo, <%= @user.email %></h1>
+<!-- @user.name not working -->
+<%= form_for mood_path do |f|%>
+  <%= f.collection_check_boxes :mood_ids, Mood.all, :id, :name %><br>
+<% end %>
