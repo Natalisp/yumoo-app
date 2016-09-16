@@ -1,9 +1,8 @@
 def make_seeds
-  make_users  
+  make_users
   make_foods
   make_moods
   make_recommendations
-  make_comments  
 end
 
 def make_users
@@ -30,14 +29,6 @@ def make_users
   User.create!(name: 'DereckMQ', email: 'nickfmq@aol.com', password: 'dddddd')
 end
 
-def make_comments
-  Comment.create!(content: 'Nah, cheese was too cheesy', user_id: 1, recommendation_id: 1)
-  Comment.create!(content: 'Mustard on the beat ho!', user_id: 2, recommendation_id: 2)
-  Comment.create!(content: 'Tryna fix your inner issues with cheat meal - never works', user_id: 5, recommendation_id: 1)
-  Comment.create!(content: 'Needed it, ohh I needed it', user_id: 4, recommendation_id: 3)
-end
-
-
 def make_foods
     Food.create(name: 'Beef Au Poivre Empanadas')
     Food.create(name: 'Mezcal Chipotle Infused BBQ Chicken')
@@ -59,7 +50,7 @@ def make_foods
     Food.create(name: 'The Catena Malbec')
     Food.create(name: 'La Marca Prosecco Champagne')
     Food.create(name: 'Black Truffle Tagliolini with Lobster')
-    Food.create(name: 'Caviar Lobster Frittata')    
+    Food.create(name: 'Caviar Lobster Frittata')
 end
 
 def make_moods
@@ -68,9 +59,9 @@ def make_moods
     Mood.create(name: 'Sleep No More')
     Mood.create(name: 'Guilty Pleasure')
     Mood.create(name: 'Skinny-B')
-    Mood.create(name: 'Chopsticks Sum') 
-    Mood.create(name: 'Wine not?') 
-    Mood.create(name: 'Caviar & Champagne Sil Vous Plait')      
+    Mood.create(name: 'Chopsticks Sum')
+    Mood.create(name: 'Wine not?')
+    Mood.create(name: 'Caviar & Champagne Sil Vous Plait')
 end
 
 def make_recommendations
