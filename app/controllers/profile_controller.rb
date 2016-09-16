@@ -5,7 +5,6 @@ class ProfileController < ApplicationController
     #user info will be shown on the header
     @mood = Mood.new #new mood form will render in the home page
     #the submit button will send the request to ProfileController#Mood action
-    @moods = Mood.all
     @history = @user.recommendations
     # previous food, mood, rating will render at the bottom of the page below the Mood form
     @recommendation = current_user.recommend_food(current_user.moods.last) if current_user.moods.last#
