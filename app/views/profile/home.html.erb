@@ -1,6 +1,8 @@
 <h1>Welcome to Yumoo, <%= @user.email %></h1>
 
 <%= form_for mood_path do |f|%>
-  <%= f.collection_check_boxes :mood_ids, Mood.all, :id, :name %><br>
+  <%= @moods.each do |mood| %>
+    
+  <% end %>
   <%= f.submit %>
 <% end %>
