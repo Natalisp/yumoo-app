@@ -1,4 +1,4 @@
-<h1>Welcome to Yumoo, <%= @user.name %></h1>
+<h1>Welcome to Yumoo, <%= @user %></h1>
 
 <%= form_for mood_path do |f|%>
   <% @moods.each do |mood| %>
@@ -6,4 +6,6 @@
   <% end %>
 <% end %>
 
-<%= button_to "logout", destroy_user_session_path, method: 'delete'  %>
+
+
+<%= button_to "logout", destroy_user_session_path, method: 'delete' %>
