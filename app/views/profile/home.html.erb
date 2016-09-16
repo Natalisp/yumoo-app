@@ -1,1 +1,8 @@
-<% binding.pry %>
+<h1>Welcome to Yumoo, <%= @user.email %></h1>
+
+<%= form_for mood_path do |f|%>
+  <%= @moods.each do |mood| %>
+    
+  <% end %>
+  <%= f.submit %>
+<% end %>
