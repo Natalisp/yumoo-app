@@ -6,5 +6,5 @@ class User < ApplicationRecord
   has_many :recommendations
   has_many :foods, through: :recommendations
   has_many :moods, through: :recommendations
-  has_many :comments
+  has_many :ratings
 end
