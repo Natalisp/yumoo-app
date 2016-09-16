@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :foods, through: :recommendations
   has_many :moods, through: :recommendations
   has_many :ratings
+
+  validates_uniqueness_of :username
 end
