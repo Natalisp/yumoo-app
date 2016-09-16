@@ -2,4 +2,5 @@
 
 <%= form_for mood_path do |f|%>
   <%= f.collection_check_boxes :mood_ids, Mood.all, :id, :name %><br>
+  <%= f.submit %>
 <% end %>
