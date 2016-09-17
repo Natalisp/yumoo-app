@@ -1,5 +1,5 @@
 def make_seeds
-  make_users
+  # make_users # uncomment this when 
   make_foods
   make_moods
   make_recommendations
