@@ -6,6 +6,7 @@ def make_seeds
 end
 
 def make_users
+  User.destroy_all
   User.create!(username: 'Nata', email: 'nata@aol.com', password: 'nnnnnn')
   User.create!(username: 'Satu', email: 'satu@aol.com', password: 'ssssss')
   User.create!(username: 'Paige', email: 'paige@aol.com', password: 'pppppp')
@@ -30,6 +31,7 @@ def make_users
 end
 
 def make_foods
+    Food.destroy_all
     Food.create(name: 'Beef Au Poivre Empanadas')
     Food.create(name: 'Mezcal Chipotle Infused BBQ Chicken')
     Food.create(name: 'Mole Poblano')
@@ -54,6 +56,7 @@ def make_foods
 end
 
 def make_moods
+    Mood.destroy_all
     Mood.create(name: 'Mexicana Mama')
     Mood.create(name: 'Hangover Cure')
     Mood.create(name: 'Sleep No More')
@@ -65,9 +68,9 @@ def make_moods
 end
 
 def make_recommendations
+  Recommendation.destroy_all
   50.times do |i|
   Recommendation.create(
-    user_id: User.all.sample.id,
     food_id: Food.all.sample.id,
     mood_id: Mood.all.sample.id,
     rating:(1..5).to_a.sample)
