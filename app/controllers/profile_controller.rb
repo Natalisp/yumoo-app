@@ -11,7 +11,7 @@ class ProfileController < ApplicationController
       mood = Mood.find_by(id: params[:mood_id])
       if mood
         # byebug
-        @user.current_mood_id = mood.id
+        @user.update(current_mood_id: mood.id)
         @recommendations = Recommendation.recommend(mood, 5)
       end
     end
