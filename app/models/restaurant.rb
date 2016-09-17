@@ -1,5 +1,5 @@
 class Restaurant < ApplicationRecord
-  
+
   def self.create_instances(restaurants)
     restaurants.each do |rest|
       Restaurant.create(rest)
