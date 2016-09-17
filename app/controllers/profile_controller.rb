@@ -14,7 +14,7 @@ class ProfileController < ApplicationController
 
   def recommend
     mood = Mood.find_by(id: params[:mood_id])
-    @recommendations = Recommendation.recommend(mood, 5) if mood
+    @recommendations = Recommendation.recommend(mood, 4) if mood
     redirect_to root_path( @recommendations )
   end  
 end

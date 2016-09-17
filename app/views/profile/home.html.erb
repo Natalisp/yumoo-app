@@ -1,9 +1,9 @@
 <div class="container">
 
-<h3>Welcome to Yumoo, <%= @user.username.capitalize %>!</h3>
-<h4>Your current mood is: <%= @user.moods.last.name if @user.moods.last %></h4>
+<h3 class="regular-text">Welcome to Yumoo, <%= @user.username.capitalize %>!</h3>
+<h4 class="regular-text">Your current mood is: <%= @user.moods.last.name if @user.moods.last %></h4>
 
-<h6>It's <%= Time.now.strftime("%A")%>
+<h6 class="regular-text">It's <%= Time.now.strftime("%A")%>
 <% now = Time.now
 today = Date.today.to_time
 morning = today.beginning_of_day
@@ -20,14 +20,14 @@ evening
 <% elsif (night..tomorrow).cover? now  %>
 night</h6>  
 <% end%>
-<h6>What do you feel like?</h6>
+<h6 class="regular-text">What do you feel like?</h6>
 
 <!-- MOODS -->
 
 <!-- MOOD BUTTON as BUTTON -->
 <% @moods.each do |mood| %>
-  <%= button_to mood.name,{ controller: 'profile', action: 'recommend',
-    method: 'post', params: { mood_id: mood.id } } %>
+  <button type="button" class="btn btn-primary btn-lg outline"><%= button_to mood.name,{ controller: 'profile', action: 'recommend',
+    method: 'post', params: { mood_id: mood.id } }, :class => "btn" %></button>
 <%end%>
 
 <!-- FOODS RECOMMENDATIONS -->
