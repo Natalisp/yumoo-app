@@ -21,14 +21,16 @@ night</h6>
 <% end%>
 <h6>What do you feel like?</h6>
 
-
-
 <!-- MOODS -->
 
 <!-- MOOD BUTTON as BUTTON -->
 <% @moods.each do |mood| %>
 <%= button_to mood.name, mood_path, :method => "get" %>
 <%end%>
+
+<!-- FOODS RECOMMENDATIONS -->
+<%%>
+
 
 </div>
 
