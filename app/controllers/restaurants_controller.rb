@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  ####Add a route or procedure for keeping the DB clean between searches
+  ####Procedure in the beginning of find route is for keeping the DB clean between searches
   ####until we are ready to store and connect them to other tables
 
   def new_seach
@@ -22,8 +22,8 @@ class RestaurantsController < ApplicationController
     google_item = params[:food_item].gsub(/\s/,"+")
     a = Google.new.call(params[:zip],google_item)
     # binding.pry
-    @restaurants = Restaurant.all  #=> this instance variable will be directed to whatever view needs to render the _restaurant.html.erb partial
-    # redirect_to #where?
+    @restaurants = Restaurant.all  #=> this instance variable will be directed to whatever view
+    #needs to render the _restaurant.html.erb partial, currently 'restaurants/find.html.erb'
   end
 
 end
