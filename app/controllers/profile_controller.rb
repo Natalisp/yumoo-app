@@ -16,25 +16,6 @@ class ProfileController < ApplicationController
       end
     end
   end
-
-<<<<<<< HEAD
-  def recommend
-    mood = Mood.find_by(id: params[:mood_id])
-    @recommendations = Recommendation.recommend(mood, 4) if mood
-    redirect_to root_path( @recommendations )
-  end  
-=======
-  # def recommend
-  #   user = current_user
-  #   mood = Mood.find_by(id: params[:mood_id])
-  #   if mood
-  #     user.current_mood_id = mood.id
-  #     @recommendations = user.current_mood.foods.limit(5)
-  #     return redirect_to root_path( @recommendations )
-  #   end
-  #   redirect_to root_path
-  # end  
->>>>>>> controllers
 end
 
 # save recommendation
