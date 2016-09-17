@@ -1,12 +1,19 @@
 class RestaurantsController < ApplicationController
+  ####Add a route or procedure for keeping the DB clean between searches
+  ####until we are ready to store and connect them to other tables
 
   def new_seach
   end
 
-  ####Add a route or procedure for keeping the DB clean between searches
-  ####until we are ready to store and connect them to other tables
-
   def find
+    # binding.pry
+    #****** TABLE RESET SEQUENCE HERE ******#
+    Restaurant.destroy_all
+    sql = "UPDATE sqlite_sequence SET seq = 1 WHERE name = 'restaurants';"
+    ActiveRecord::Base.connection.execute(sql)
+    #***************************************#
+
+
     ###restaurants from the scraper
     sr = Scraper.new
     sr.parse_address(params[:food_item], params[:zip])

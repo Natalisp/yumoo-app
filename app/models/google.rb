@@ -8,12 +8,12 @@ class Google
 
   def call(zipcode="10027", keyword="burger")
     if valid?(zipcode)
-      parse(keyword) 
+      parse(keyword)
     else
       return false
     end
   end
-  
+
   def valid?(zipcode)
     #check if the zipcode is in the csv file
     CSV.foreach('./app/models/zipcode/zipcode.csv') do |row|
@@ -24,8 +24,8 @@ class Google
     end
   end
 
-  def parse(keyword) 
-    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{@cordinates}&radius=1000&keyword=#{keyword}&types=food&key=AIzaSyDrPnWTc2lB5VL__4mFy6fU6kFCOVIU0KU"
+  def parse(keyword)
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{@cordinates}&radius=2000&keyword=#{keyword}&types=food&key=AIzaSyDrPnWTc2lB5VL__4mFy6fU6kFCOVIU0KU"
     uri = URI(url)
     a = Net::HTTP.get(uri)
     @places_hash = JSON.parse(a)
@@ -46,7 +46,7 @@ class Google
     end
     model_generator(restaurants)
   end
-  
+
   def get_the_link(link_url)
     uri = URI(link_url)
     a = Net::HTTP.get(uri)
