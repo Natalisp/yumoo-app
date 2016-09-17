@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   post '/home' => 'profile#mood', as: 'mood'
 
   resources :recommendations, only: [:index, :create]
+
+  get '/restaurants' => 'restaurants#new_search'
+  post '/restaurants' => 'restaurants#find'
 end
