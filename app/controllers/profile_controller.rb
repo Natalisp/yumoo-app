@@ -9,12 +9,14 @@ class ProfileController < ApplicationController
     # @recommendation = current_user.recommend_food(current_user.moods.last) if current_user.moods.last
 
     mood = @user.moods.last
-    @recommendations = Recommendation.recommend(mood, 5) if mood
+    @recommendations = mood.foods.limit(5) if mood
   end
 
   def recommend
+    # byebug
     mood = Mood.find_by(id: params[:mood_id])
-    @recommendations = Recommendation.recommend(mood, 5) if mood
+    # @recommendations = Recommendation.recommend(mood, 5) 
+    @recommendations = mood.foods.limit(5) if mood
     redirect_to root_path( @recommendations )
   end  
 end

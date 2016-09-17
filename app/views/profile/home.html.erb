@@ -31,9 +31,10 @@ night</h6>
 <%end%>
 
 <!-- FOODS RECOMMENDATIONS -->
+<h3>Recommendations</h3>
 <% if @recommendations %>
-  <% @recommendations.each do |r| %>
-    <%= r.food.name %>
+  <% @recommendations.each do |food| %>
+    <p><%= food.name %></p>
   <% end %>
 <% else%>
   <h1>Select your mood to get food recommmendation</h1>
