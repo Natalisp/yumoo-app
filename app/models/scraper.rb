@@ -59,14 +59,14 @@ class Scraper
   end
 
   def model_generator
-    Restaurant.yelp_instances(@restaurants)
+    Restaurant.create_instances(@restaurants)
   end
 end
 
 #Quick calls For testing
-scr = Scraper.new
-scr.parse_address("banana split")
+# scr = Scraper.new
+# scr.parse_address("banana split")
 # scr.scrape_address
-scr.restaurant_options
+# scr.restaurant_options
 # puts scr.restaurants
 
