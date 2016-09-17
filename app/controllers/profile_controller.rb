@@ -16,6 +16,9 @@ class ProfileController < ApplicationController
     # @history = @user.recommendations
   end
 
+  def recommended
+  end
+
   def mood
     @mood = Mood.find_by(id: params[:id])
     current_user.moods << @mood if @mood

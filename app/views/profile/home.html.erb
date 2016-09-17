@@ -24,12 +24,12 @@ night</h6>
 <!-- MOODS -->
 
 <!-- MOOD BUTTON as BUTTON -->
+
 <% @moods.each do |mood| %>
-<%= button_to mood.name, mood_path, :method => "get" %>
+ <button type="button" class="btn btn-primary btn-lg outline"><%= button_to mood.name, mood_path, :method => "get", :class => "btn" %> </button>
 <%end%>
 
 <!-- FOODS RECOMMENDATIONS -->
-<%%>
 
 
 </div>
