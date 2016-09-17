@@ -34,13 +34,13 @@ class Scraper
       #rating
       restaurant[:rating] = area_of_interest.css(".rating-large")[i].css("i").attribute("title").value
       #number of reviews on yelp
-      restaurant[:reviews] = area_of_interest.css(".review-count.rating-qualifier")[i].text.match(/\d+\sreviews/)[0]
+      # restaurant[:reviews] = area_of_interest.css(".review-count.rating-qualifier")[i].text.match(/\d+\sreviews/)[0]
       #price category
       restaurant[:price] = area_of_interest.css(".business-attribute.price-range")[i].text
       # restaurant category
       restaurant[:category] = area_of_interest.css(".category-str-list")[i].text.gsub(/\s{2,}/,"")
       #neighborhood
-      restaurant[:neighborhood] = area_of_interest.css(".neighborhood-str-list")[i].text.gsub(/\s{2,}/,"")
+      # restaurant[:neighborhood] = area_of_interest.css(".neighborhood-str-list")[i].text.gsub(/\s{2,}/,"")
       #address unformatted
       restaurant[:address] = area_of_interest.css("address")[i].text.gsub(/\s{2,}/,"")
       #phone
@@ -48,22 +48,25 @@ class Scraper
 
       #Yelp webpage
       yelp_path = area_of_interest.css(".indexed-biz-name")[i].css("a").attribute("href").value.split("?")[0]
-      restaurant[:yelp_page] = "#{@base_address}#{yelp_path}"
+      restaurant[:link] = "#{@base_address}#{yelp_path}"
       collection[i] = restaurant
       i = i + 1
       #company webpage & yelp menupage (both of these require scraping the yelp webpage)!
     end
     @restaurants = collection
-    # binding.pry
+    model_generator
     #return data in a hash that can be read to restaurant model or view via controller
   end
 
+  def model_generator
+    Restaurant.create_instances(@restaurants)
+  end
+end
 
-
-###Quick calls For testing
+#Quick calls For testing
 # scr = Scraper.new
 # scr.parse_address("banana split")
-# puts scr.scrape_address
+# scr.scrape_address
 # scr.restaurant_options
+# puts scr.restaurants
 
-end
