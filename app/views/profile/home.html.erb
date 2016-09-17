@@ -1,4 +1,22 @@
-<h1>Welcome to Yumoo, q <%= @user.username %></h1>
+<h3>Welcome to Yumoo, <%= @user.username.capitalize %>!</h3>
+
+<h6>It's <%= Time.now.strftime("%A")%>
+<% now = Time.now
+today = Date.today.to_time
+morning = today.beginning_of_day
+noon = today.noon
+evening = today.change( hour: 17 )
+night = today.change( hour: 20 )
+tomorrow = today.tomorrow
+if (morning..noon).cover? now %>
+morning
+<% elsif (noon..evening).cover? now  %>
+afternoon
+<% elsif (evening..night).cover? now  %>
+evening
+<% elsif (night..tomorrow).cover? now  %>
+night</h6>  
+<% end%>
 
 <%= @user.username%>
 <%= form_for mood_path do |f|%>
@@ -8,3 +26,4 @@
 <% end %>
 
 <%= button_to "logout", destroy_user_session_path, method: 'delete' %>
+
