@@ -1,5 +1,5 @@
 def make_seeds
-  # make_users # uncomment this when 
+  # make_users # uncomment this when
   make_foods
   make_moods
   make_recommendations
@@ -66,11 +66,11 @@ end
 
 def make_recommendations
   50.times do |i|
-  Recommendation.create(
-    user_id: User.all.sample.id,
-    food_id: Food.all.sample.id,
-    mood_id: Mood.all.sample.id,
-    rating:(1..5).to_a.sample)
+    Recommendation.create(
+      user_id: User.all.sample.id,
+      food_id: Food.all.sample.id,
+      mood_id: Mood.all.sample.id,
+      rating:(1..5).to_a.sample)
   end
 end
 
