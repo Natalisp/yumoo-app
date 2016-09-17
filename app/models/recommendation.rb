@@ -1,6 +1,5 @@
 class Recommendation < ApplicationRecord
   belongs_to :food
-  belongs_to :user
   belongs_to :mood
 
   has_many :ratings
@@ -13,7 +12,7 @@ class Recommendation < ApplicationRecord
   # end
 
   def self.recommend(mood = Mood.all.sample, limit = 5)
-    where('mood_id = ?', mood.id).limit(limit)
+    where('mood_id = ?', mood.id).order('rating DESC').limit( limit*2 ).sample(limit)
   end
 
   def greet
