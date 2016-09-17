@@ -1,9 +1,11 @@
 class RecommendationsController < ApplicationController
+  # create recommendation
   def create
     Recommendation.create(recommendation_params)
     redirect_to :rating_path
   end
 
+  # rate recommendation
   def update
     @recommendation = Recommendation.find_by(
       food_id: params[:recommendation][:food_id],
@@ -11,7 +13,6 @@ class RecommendationsController < ApplicationController
     )
     @recommendation.update(rating: params[:recommendation][:rating]) if @recommendation
   end
-
 
   private
     def recommendation_path

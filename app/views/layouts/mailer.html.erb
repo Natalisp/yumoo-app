@@ -8,8 +8,8 @@
   </head>
 
   <body>
-    <div class="alert"><%= alert if alert %></div>
-    <div class="notice"><%= notice if notice %></div>
+    <div class="alert"><%= @alert if @alert %></div>
+    <div class="notice"><%= @notice if @notice %></div>
     <%= yield %>
   </body>
 </html>
