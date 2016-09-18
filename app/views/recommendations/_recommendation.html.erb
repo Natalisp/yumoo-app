@@ -1,13 +1,18 @@
 <!-- in controller, method to provide random 10 mood-food combos to rate -->
 
 <div class="container">
-    
+
     <% @foods.each do |food| %>
       <%= food.name %>
     <% end %>
 
     <% @moods.each do |mood| %>
       <%= mood.name %>
+    <% end %>
+
+    <%= form_for root_path do |f| %>
+      <%= f.collection_check_boxes(1..5) %>
+      <%= f.submit %>
     <% end %>
 
 </div>
