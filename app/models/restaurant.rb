@@ -16,6 +16,6 @@ class Restaurant < ApplicationRecord
   # end
 
   def print_it_all
-   "Name: #{self.name}\nCategory:#{self.category}\nRating:#{self.rating}\nPrice Range:#{self.price}\nAddress:\n#{self.address}\nPhone:#{self.phone}"
+   "Name: #{self.name}; Category: #{self.category}; Rating: #{self.rating}; Price Range: #{self.price}; Address: #{self.address}; Phone: #{self.phone}"
  end
 end

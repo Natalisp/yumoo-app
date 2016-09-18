@@ -15,19 +15,25 @@ class Scraper
   #possible search filters here or in a separate function?
   #https://www.yelp.com/search?find_desc=banana+split&find_loc=New+York%2C+NY
   #change location into a zip code here
-  def parse_address(food_item, location=11214)
+  def parse_address(food_item, location=10005)
     @scrape_address = "#{@base_address}#{@search_fragment}#{food_item}#{@location_fragment}#{location}".gsub(" ", "+").gsub(",","%2C")
   end
 
-  def restaurant_options
+  def parse_1_mile_distance
+    distance_element = "&start=0&l="
+    raw_text = Nokogiri::HTML(open(@scrape_address, "User-Agent" => "Mozilla/5.0 (X11; CrOS i686 12.433.216) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.105 Safari/534.30"))
+    coordinates = raw_text.css(".filter-panel").css(".radio-list").css("li")[6].css("input").attribute("value").value
+    @scrape_address = "#{@scrape_address}#{distance_element}#{coordinates}"
+    binding.pry
+  end
 
+  def restaurant_options
     raw_text = Nokogiri::HTML(open(@scrape_address, "User-Agent" => "Mozilla/5.0 (X11; CrOS i686 12.433.216) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.105 Safari/534.30"))
     area_of_interest = raw_text.css(".regular-search-result")
-
     i = 0
     collection = []
 
-    while i < 6
+    while i < 5
       restaurant = Hash.new(0)
       #name
       restaurant[:name] = area_of_interest.css(".indexed-biz-name")[i].css("span").text
@@ -49,6 +55,10 @@ class Scraper
       #Yelp webpage
       yelp_path = area_of_interest.css(".indexed-biz-name")[i].css("a").attribute("href").value.split("?")[0]
       restaurant[:link] = "#{@base_address}#{yelp_path}"
+
+      #source
+      restaurant[:source] = "Yelp"
+
       collection[i] = restaurant
       i = i + 1
       #company webpage & yelp menupage (both of these require scraping the yelp webpage)!
@@ -65,8 +75,8 @@ end
 
 #Quick calls For testing
 # scr = Scraper.new
-# scr.parse_address("banana split")
-# scr.scrape_address
+# scr.parse_address("pizza", 11214)
+# scr.parse_1_mile_distance
+#
 # scr.restaurant_options
 # puts scr.restaurants
-
