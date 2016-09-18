@@ -66,7 +66,7 @@ end
 
 def make_recommendations
   20.times do |i|
-  Recommendation.create(user_id: i+1, food_id: i+1, mood_id: i+1, rating:(1..5).to_a.sample)
+    Recommendation.create(user_id: i+1, food_id: i+1, mood_id: i+1, rating:(1..5).to_a.sample)
   end
 end
 

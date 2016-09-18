@@ -12,6 +12,14 @@ class RecommendationsController < ApplicationController
     @recommendation.update(rating: params[:recommendation][:rating]) if @recommendation
   end
 
+  def index
+    @foods = Food.all.sample(9)
+    @moods = Mood.all.sample(9)
+    #post
+    @rating = Rating.create(params[:rating])
+    current_user.ratings << @rating
+  end
+
 
   private
     def recommendation_path
