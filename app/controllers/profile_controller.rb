@@ -16,8 +16,13 @@ class ProfileController < ApplicationController
       end
     end
   end
+
+  def history
+   #recommendations partial
+  end
+
 end
 
 # save recommendation
 #UsersRecommendation.create(user_id: current_user.id, recommendation_id: @recommendations.first.id)
-# @recommendations = Recommendation.recommend(mood, 5) 
+# @recommendations = Recommendation.recommend(mood, 5)

@@ -15,10 +15,7 @@ class RecommendationsController < ApplicationController
   end
 
   def index
-    @recommendations = Recommendation.all.sample(10)
-    #post
-    @rating = Rating.create(params[:rating])
-    current_user.ratings << @rating
+    @recommendation = Recommendation.all.sample
   end
 
   private

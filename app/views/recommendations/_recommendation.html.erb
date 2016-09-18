@@ -7,11 +7,11 @@
       <th>Rating</th>
     </tr>
 
-    <% @recommendations.each do |rec| %>
+    <% @data.each do |recommendation| %>
       <tr>
-        <td><%= rec.food.name %></td>
-        <td><%= rec.mood.name %></td>
-        <td><%= rec.rating %></td>
+        <td><%= recommendation.food.name %></td>
+        <td><%= recommendation.mood.name %></td>
+        <td><%= recommendation.rating %></td>
       </tr>
     <% end %>
 
