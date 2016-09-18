@@ -2,7 +2,22 @@
 
 <div class="container">
 
-    
+  <table>
+    <tr>
+      <th>Food</th>
+      <th>Mood</th>
+      <th>Rating</th>
+    </tr>
+
+    <% @recommendations.each do |rec| %>
+      <tr>
+        <td><%= rec.food.name %></td>
+        <td><%= rec.mood.name %></td>
+        <td><%= rec.rating %></td>
+      </tr>
+    <% end %>
+
+  </table>
 
 </div>
 
