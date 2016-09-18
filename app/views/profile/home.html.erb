@@ -25,18 +25,102 @@ night</h6>
 <!-- MOODS -->
 
 <!-- MOOD BUTTON as BUTTON -->
+<div class="ui stackable three column grid">
 <% @moods.each do |mood| %>
-  <%= button_to mood.name,{ controller: 'profile', action: 'home',
-    method: 'post', params: { mood_id: mood.id } } %>
+  <div class="column">
+    <div class="ui special cards">
+      <div class="ui centered card">
+        <div class="blurring dimmable image">
+          <h3><%= mood.name %></h3>
+          <div class="ui dimmer">
+            <div class="content">
+              <div class="center">
+                <%= button_to 'select', { controller: 'profile', action: 'home',
+        method: 'post', params: { mood_id: mood.id } }, class: 'ui inverted button' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <%end%>
+</div>
 
 <!-- FOODS RECOMMENDATIONS -->
-<h3>Recommendations</h3>
+
+
 
 <% if @recommendations %>
-  <% @recommendations.each do |r| %>
-    <p><%= r.food.name %> &nbsp; <small>rating: <%= r.rating %></small></p>
-  <% end %>
+  <!-- main recommendation -->
+  <div class="ui modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Recommendations for <%= current_user.current_mood.name %>
+    </div>
+
+    <div class="ui main-recommendation">
+      <h1 class="ui inverted"><%= @recommendations[0].food.name %>
+        <span class="mini circular ui icon button" style="float: right; background: white;">
+          <%= @recommendations[0].rating %>
+        </span>
+      </h1>
+      
+      <h3>Do whatever you want when you want to.</h3>
+
+      <div class="content">
+        <p class="transition visible" style="display: block !important;">
+          <div class="mini ui right action left icon input">
+            <i class="marker icon"></i>
+            <input type="text" placeholder="your zipcode">
+            <button class="mini ui orange right labeled icon button">
+              <i class="arrow right icon"></i>
+              Get it
+            </button>
+          </div>
+        </p>
+      </div>
+
+    </div>
+
+    <!-- sub recommendations -->
+    <h3 class="ui text container" style="text-align:center;">People also liked</h3>
+    <div class="ui styled accordion" style="margin: 0 auto;">
+      <% @recommendations[1..@recommendations.length].each do |r| %>
+      <div class="title">
+
+        <p><i class="dropdown icon"></i>
+          <%= r.food.name %>
+          <span class="mini ui left labeled button" style="float: right" tabindex="0">
+            <a class="ui basic right pointing label">
+              rating
+            </a>
+            <span class="right mini ui button">
+              <%= r.rating %>
+            </span>
+          </span>
+        </p>
+      </div>
+
+      <div class="content extra" style="text-align: center;">
+        <p class="transition visible" style="display: block !important;">
+          <div class="mini ui right action left icon input" >
+            <i class="marker icon"></i>
+            <input type="text" placeholder="your zipcode">
+            <button class="mini ui orange right labeled icon button">
+              <i class="arrow right icon"></i>
+              Get it
+            </button>
+          </div>
+        </p>
+      </div>
+
+      <% end %>
+    </div>
+  </div>
+
+  
+
 <% else%>
   <h1>Select your mood to get food recommmendation</h1>
   <h2>or hit the 'SURPRISE ME' button</h2>

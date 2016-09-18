@@ -1,8 +1,35 @@
 <nav>
-  <% if user_signed_in? %>
-    <%= button_to "logout", destroy_user_session_path, method: 'delete' %>
-  <% else %>
-    <%= button_to "login", new_user_session_path, method: 'get' %>
-    <%= button_to "signup", new_user_registration_path, method: 'get' %>
-  <% end %>
+  <div class="ui secondary pointing menu">
+    <% if user_signed_in? %>
+    <a class="item sidebar-toggler">
+      <i class="sidebar icon"></i>
+    </a>
+    <a class="item active">
+      Home
+    </a>
+
+    <div class="right menu">
+      <a class="ui item" style="position: relative;top: 0.5em;">
+        <div class="ui item">
+          <div class="ui transparent icon input">
+            <input type="text" placeholder="search foods...">
+            <i class="search link icon"></i>
+          </div>
+        </div>
+        <%= button_to "logout", destroy_user_session_path, method: 'delete', class: 'mini ui button' %>
+      </a>
+    </div>
+
+    <% else %>
+      <div class="right menu">
+        <a class="ui item" style="position: relative;top: 0.5em;">
+          <div class="ui mini buttons">
+            <%= button_to "login", new_user_session_path, method: 'get', class: "ui button" %>
+            <div class="or"></div>
+            <%= button_to "signup", new_user_registration_path, method: 'get', class: 'ui button' %>
+          </div>
+        </a>
+      </div>
+    <% end %>
+  </div>
 </nav>

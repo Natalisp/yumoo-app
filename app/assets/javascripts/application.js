@@ -34,4 +34,4 @@ $('.special.cards .image').dimmer({
 
 
 // $('.ui.modal').modal('attach events', '.modal-button', 'show');
-// $('.ui.modal').modal('show');
+$('.ui.modal').modal('show');
