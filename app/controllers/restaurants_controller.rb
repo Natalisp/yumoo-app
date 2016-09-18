@@ -15,12 +15,11 @@ class RestaurantsController < ApplicationController
 
 
     ###restaurants from the scraper
-    sr = Scraper.new
-    sr.parse_address(params[:food_item], params[:zip])
-    sr.restaurant_options
+    Scraper.new.scrape_it(params[:food_item], params[:zip])
+
     ###restaurants from Google api
     google_item = params[:food_item].gsub(/\s/,"+")
-    a = Google.new.call(params[:zip],google_item)
+    Google.new.call(params[:zip],google_item)
     # binding.pry
     @restaurants = Restaurant.all  #=> this instance variable will be directed to whatever view
     #needs to render the _restaurant.html.erb partial, currently 'restaurants/find.html.erb'

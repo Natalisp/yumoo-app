@@ -24,7 +24,6 @@ class Scraper
     raw_text = Nokogiri::HTML(open(@scrape_address, "User-Agent" => "Mozilla/5.0 (X11; CrOS i686 12.433.216) AppleWebKit/534.30 (KHTML, like Gecko) Chrome/12.0.742.105 Safari/534.30"))
     coordinates = raw_text.css(".filter-panel").css(".radio-list").css("li")[6].css("input").attribute("value").value
     @scrape_address = "#{@scrape_address}#{distance_element}#{coordinates}"
-    binding.pry
   end
 
   def restaurant_options
@@ -33,7 +32,7 @@ class Scraper
     i = 0
     collection = []
 
-    while i < 5
+    while i < 6
       restaurant = Hash.new(0)
       #name
       restaurant[:name] = area_of_interest.css(".indexed-biz-name")[i].css("span").text
@@ -70,6 +69,12 @@ class Scraper
 
   def model_generator
     Restaurant.create_instances(@restaurants)
+  end
+
+  def scrape_it(food_item, location=10005, restricted = false)
+    parse_address(food_item, location)
+    parse_1_mile_distance if restricted
+    restaurant_options
   end
 end
 
