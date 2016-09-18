@@ -9,7 +9,7 @@ class ProfileController < ApplicationController
     # @recommendation = current_user.recommend_food(current_user.moods.last) if current_user.moods.last
 
     mood = @user.moods.last
-    @recommendations = Recommendation.recommend(mood, 5) if mood
+    # @recommendations = Recommendation.recommend(mood, 5) if mood
   end
 
   def recommend
