@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+.ui.modal {
+  padding-bottom: 3em;
+}
+
+.main-recommendation {
+  margin: 5% auto;
+  padding: 3%;
+  max-width: 600px;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  background-image: linear-gradient(to right bottom, rgba(255,52,16, 1), rgba(0,255,0,0.2));
+}
+
+.ui.stackable.column.grid {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.special.cards .card {
+  background-image: linear-gradient(to right bottom, rgba(255,252,216, 1), rgba(200,200,200,0.2)) !important;
+}
+
+.special.cards .card .image {
+  background: ;
+  height: 10em;
+  background-image: linear-gradient(to right bottom, rgba(255,52,16, 1), rgba(0,255,0,0.2));
+}
+
+.special.cards .card .image h3 {
+  text-align: center;
+  /*height: 10em;*/
+  margin-top: 30%;
+}
