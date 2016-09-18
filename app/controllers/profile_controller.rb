@@ -7,14 +7,17 @@ class ProfileController < ApplicationController
     @moods = Mood.all
     # previous food, mood, rating will render at the bottom of the page below the Mood form
     # @recommendation = current_user.recommend_food(current_user.moods.last) if current_user.moods.last
-
-    mood = @user.moods.last
-    @recommendations = Recommendation.recommend(mood, 5) if mood
+    if params[:mood_id]
+      mood = Mood.find_by(id: params[:mood_id])
+      if mood
+        # byebug
+        @user.update(current_mood_id: mood.id)
+        @recommendations = Recommendation.recommend(mood, 5)
+      end
+    end
   end
-
-  def recommend
-    mood = Mood.find_by(id: params[:mood_id])
-    @recommendations = Recommendation.recommend(mood, 4) if mood
-    redirect_to root_path( @recommendations )
-  end  
 end
+
+# save recommendation
+#UsersRecommendation.create(user_id: current_user.id, recommendation_id: @recommendations.first.id)
+# @recommendations = Recommendation.recommend(mood, 5) 
