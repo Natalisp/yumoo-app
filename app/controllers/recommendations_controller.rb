@@ -14,6 +14,10 @@ class RecommendationsController < ApplicationController
     @recommendation.update(rating: params[:recommendation][:rating]) if @recommendation
   end
 
+  def index
+    @recommendation = Recommendation.all.sample
+  end
+
   private
     def recommendation_path
       params.require(:recommendation).permit(:food_id, :mood_id, :rating)

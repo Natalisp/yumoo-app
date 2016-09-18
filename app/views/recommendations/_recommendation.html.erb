@@ -1,25 +1,20 @@
-<h3>Have Fun and Rate</h3>
-
-#in controller, method to provide random 10 mood-food combos to rate
-
 <div class="container">
 
-  <div class="row">
+  <table>
+    <tr>
+      <th>Food</th>
+      <th>Mood</th>
+      <th>Rating</th>
+    </tr>
 
-    <div class="col-sm-2">
+    <% @data.each do |recommendation| %>
+      <tr>
+        <td><%= recommendation.food.name %></td>
+        <td><%= recommendation.mood.name %></td>
+        <td><%= recommendation.rating %></td>
+      </tr>
+    <% end %>
 
-    </div>
+  </table>
 
-    <div class="col-sm-7">
-
-    </div>
-
-    <div class="col-sm-3">
-
-    </div>
-
-  </div> #row
-
-</div> #container
-
-#button to give another random 10 food-mood combos to rate - same method as when page is first rendered
+</div>
