@@ -1,8 +1,9 @@
 def make_seeds
-  # make_users # uncomment this when
+  make_users # uncomment this when
   make_foods
   make_moods
   make_recommendations
+  make_ratings
 end
 
 def make_users
@@ -12,7 +13,7 @@ def make_users
   User.create!(username: 'Paige', email: 'paige@aol.com', password: 'pppppp')
   User.create!(username: 'Aehmet', email: 'ahhhmed@aol.com', password: 'aaaaaa')
   User.create!(username: 'Dereck', email: 'nick@aol.com', password: 'dddddd')
-  User.create!(username: 'Natasha', email: 'natasha@aol.com', password: 'nnnnnn')
+  User.create!(username: 'Natasha4', email: 'natasha@aol.com', password: 'nnnnnn')
   User.create!(username: 'SatuB', email: 'satub@aol.com', password: 'ssssss')
   User.create!(username: 'PaigeL', email: 'paigeL@aol.com', password: 'pppppp')
   User.create!(username: 'AehmetF', email: 'ahhhmedf@aol.com', password: 'aaaaaa')
@@ -69,11 +70,27 @@ end
 
 def make_recommendations
   Recommendation.destroy_all
-  50.times do |i|
+  50.times do
     Recommendation.create(
       food_id: Food.all.sample.id,
       mood_id: Mood.all.sample.id,
       rating:(1..5).to_a.sample
+    )
+  end
+end
+
+def make_ratings
+  Rating.destroy_all
+  500.times do
+    Rating.create(
+      user_id: User.all.sample.id,
+      recommendation_id: Recommendation.all.sample.id,
+      score:(1..5).to_a.sample,
+      comment: [nil, 'Works for me everytime',
+        'spot on!',
+        'not the best but..', 
+        'meh', 'so true',
+      ].sample
     )
   end
 end
