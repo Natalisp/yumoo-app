@@ -69,6 +69,10 @@ def make_moods
 end
 
 def make_recommendations
+<<<<<<< HEAD
+  20.times do |i|
+    Recommendation.create(user_id: i+1, food_id: i+1, mood_id: i+1, rating:(1..5).to_a.sample)
+=======
   Recommendation.destroy_all
   50.times do
     Recommendation.create(
@@ -92,6 +96,7 @@ def make_ratings
         'meh', 'so true',
       ].sample
     )
+>>>>>>> 95eff7adddf0774a9b3c20d7469a37bbb17eb20a
   end
 end
 
