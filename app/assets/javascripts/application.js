@@ -14,3 +14,24 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// using context
+
+$('.ui.sidebar').sidebar({
+  context: $('.bottom.segment')
+}).sidebar('attach events', '.menu .item.sidebar-toggler');
+
+
+$('.accordion').accordion({
+  selector: {
+    trigger: '.title .icon'
+  }
+});
+
+$('.special.cards .image').dimmer({
+  on: 'hover'
+});
+
+
+// $('.ui.modal').modal('attach events', '.modal-button', 'show');
+// $('.ui.modal').modal('show');
