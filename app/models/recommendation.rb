@@ -5,11 +5,16 @@ class Recommendation < ApplicationRecord
   has_many :ratings
 
 
-  # def rating
-  #   @rating = ratings.map do |rating|
-  #     rating.score
-  #   end.reduce(:+).fdiv(arr.size)
-  # end
+  def rating
+    rating_scores = self.ratings.map do |rating|
+      rating.score
+    end
+    rating = rating_scores.reduce(:+).fdiv(rating_scores.size).round(1)
+
+    self.rating = rating
+    self.save
+    rating
+  end
 
   def self.recommend(mood = Mood.all.sample, limit = 5)
     where('mood_id = ?', mood.id).order('rating DESC').limit( limit*2 ).sample(limit)
