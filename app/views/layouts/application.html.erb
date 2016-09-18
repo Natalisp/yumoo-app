@@ -2,13 +2,13 @@
 <html>
   <head>
     <title>Yumoo</title>
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  <!-- custom styles -->
-  <link rel="stylesheet" type="text/css" href="css/style.css">    
     <%= csrf_meta_tags %>
-
+    <!-- APP CSS -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- SEMANTIC UI CSS -->
+    <%= stylesheet_link_tag    'semantic.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- custom styles -->
+    <link rel="stylesheet" type="text/css" href="css/style.css"> 
   </head>
 
   <body>
@@ -16,6 +16,37 @@
       <%= render 'layouts/nav' %>
     </header>
 
-    <%= yield %>
+    <div class="ui bottom attached segment pushable">
+      <div class="ui inverted labeled icon left inline vertical sidebar menu">
+        <a class="item">
+          <i class="home icon"></i>
+          Home
+        </a>
+        <a class="item">
+          <i class="block layout icon"></i>
+          Topics
+        </a>
+        <a class="item">
+          <i class="smile icon"></i>
+          Friends
+        </a>
+      </div>
+      <div class="pusher">
+        <div class="ui basic segment">
+          <main> <%= yield %> </main>
+        </div>
+      </div>
+    </div>
+    
+    <!-- JQUERY -->
+    <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <!-- SEMANTIC UI JS -->
+    <%= javascript_include_tag 'semantic.min', 'data-turbolinks-track': 'reload' %>
+    <!-- APP JS -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script type="text/javascript">
+      $('.ui.modal').modal('show');
+    </script>
   </body>
 </html>
