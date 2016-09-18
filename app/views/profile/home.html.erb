@@ -1,9 +1,45 @@
-<h1>Welcome to Yumoo, <%= @user.username %></h1>
+<div class="container">
 
-<%= form_for mood_path do |f|%>
-  <% @moods.each do |mood| %>
-    <%= f.submit mood.name %>
+<h3>Welcome to Yumoo, <%= @user.username.capitalize %>!</h3>
+<h4><%= "Your current mood is: #{current_user.current_mood.name}" if current_user.current_mood %></h4>
+
+<h6 class="regular-text">It's <%= Time.now.strftime("%A")%>
+<% now = Time.now
+today = Date.today.to_time
+morning = today.beginning_of_day
+noon = today.noon
+evening = today.change( hour: 17 )
+night = today.change( hour: 20 )
+tomorrow = today.tomorrow
+if (morning..noon).cover? now %>
+morning 
+<% elsif (noon..evening).cover? now  %>
+afternoon
+<% elsif (evening..night).cover? now  %>
+evening
+<% elsif (night..tomorrow).cover? now  %>
+night</h6>  
+<% end%>
+<h6 class="regular-text">What do you feel like?</h6>
+
+<!-- MOODS -->
+
+<!-- MOOD BUTTON as BUTTON -->
+<% @moods.each do |mood| %>
+  <%= button_to mood.name,{ controller: 'profile', action: 'home',
+    method: 'post', params: { mood_id: mood.id } } %>
+<%end%>
+
+<!-- FOODS RECOMMENDATIONS -->
+<h3>Recommendations</h3>
+
+<% if @recommendations %>
+  <% @recommendations.each do |r| %>
+    <p><%= r.food.name %> &nbsp; <small>rating: <%= r.rating %></small></p>
   <% end %>
+<% else%>
+  <h1>Select your mood to get food recommmendation</h1>
+  <h2>or hit the 'SURPRISE ME' button</h2>
 <% end %>
 
-<%= button_to "logout", destroy_user_session_path, method: 'delete' %>
+</div>

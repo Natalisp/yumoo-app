@@ -1,9 +1,11 @@
 class RecommendationsController < ApplicationController
+  # create recommendation
   def create
     Recommendation.create(recommendation_params)
     redirect_to :rating_path
   end
 
+  # rate recommendation
   def update
     @recommendation = Recommendation.find_by(
       food_id: params[:recommendation][:food_id],
@@ -13,13 +15,11 @@ class RecommendationsController < ApplicationController
   end
 
   def index
-    @foods = Food.all.sample(9)
-    @moods = Mood.all.sample(9)
+    @recommendations = Recommendation.all.sample(10)
     #post
     @rating = Rating.create(params[:rating])
     current_user.ratings << @rating
   end
-
 
   private
     def recommendation_path
