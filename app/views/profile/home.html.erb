@@ -21,13 +21,8 @@
       <% elsif (night..tomorrow).cover? now  %>
       night,
       <% end%> eh?
-<<<<<<< HEAD
       </h1>
       <h2 class="regular-text"><%= "Is your mood still '#{current_user.current_mood.name}'?" if current_user.current_mood %></h2>
-=======
-    </h2>
-    <h3><%= "Last Mood: #{current_user.current_mood.name}" if current_user.current_mood %></h3>
->>>>>>> 2f080cf721c598809db656ff6d00088fb76c01cb
 
     </div>
   </div>
