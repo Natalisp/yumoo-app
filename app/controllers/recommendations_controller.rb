@@ -25,7 +25,7 @@ class RecommendationsController < ApplicationController
         user_id: current_user.id,
         recommendation_id: params[:r_id]
       )
-      rating.update(score: params[:score]) if rating
+      rating.update(score: params[:score].to_i) if rating
       flash[:notice] = "Your rating has been submitted. Thank you"
     end
     redirect_to recommendations_path
