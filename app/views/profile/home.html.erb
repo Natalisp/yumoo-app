@@ -86,7 +86,7 @@
             <input type="hidden" name="food_item", value="<%= @recommendations[0].food.name %>">
             <div class="mini ui right action left icon input">
               <i class="marker icon"></i>
-              <input type="text" name="zip" placeholder="your zipcode">
+              <input type="text" name="zip" placeholder="your zipcode" value="<%= current_user.zip if current_user.zip %>">
               <button type="submit" class="mini ui orange right labeled icon button">
                 <i class="arrow right icon"></i>
                 I need this!
@@ -120,13 +120,14 @@
       </div>
 
       <div class="content extra" style="text-align: center;">
+
         <form method = "POST" action = '/restaurants'>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           <p class="transition visible" style="display: block !important;">
             <input type="hidden" name="food_item", value="<%= r.food.name %>">
             <div class="mini ui right action left icon input">
               <i class="marker icon"></i>
-              <input type="text" name="zip" placeholder="your zipcode">
+              <input type="text" name="zip" placeholder="your zipcode" value="<%= current_user.zip if current_user.zip %>">
               <button type="submit" class="mini ui orange right labeled icon button">
                 <i class="arrow right icon"></i>
                 I need this!
@@ -134,6 +135,7 @@
             </div>
           </p>
         </form>
+
       </div>
 
       <% end %>

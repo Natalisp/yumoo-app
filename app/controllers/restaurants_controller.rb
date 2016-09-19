@@ -30,7 +30,7 @@ class RestaurantsController < ApplicationController
     else
       if !@message[1][:error].empty? && @restaurants.empty?
           flash[:error] =  @message[1][:error]
-          redirect_to restaurants_path
+          redirect_to root_path
       end
     end
   end

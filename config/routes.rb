@@ -7,6 +7,6 @@ Rails.application.routes.draw do
 
   resources :recommendations, only: [:index, :create]
 
-  get '/restaurants' => 'restaurants#new_search'
+  # get '/restaurants' => 'restaurants#new_search'
   post '/restaurants' => 'restaurants#find'
 end
