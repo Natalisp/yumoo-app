@@ -114,16 +114,21 @@
       </div>
 
       <div class="content extra" style="text-align: center;">
-        <p class="transition visible" style="display: block !important;">
+        <!-- <p class="transition visible" style="display: block !important;">
           <div class="mini ui right action left icon input" >
             <i class="marker icon"></i>
             <input type="text" placeholder="your zipcode">
             <button class="mini ui orange right labeled icon button">
-              <i class="arrow right icon"></i>
-              I need this!
+              <i class="arrow right icon"></i>  
             </button>
           </div>
-        </p>
+        </p> -->
+        <form method = "POST" action = '/restaurants'>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <input type="hidden" name="food_item", value="<%= r.food.name %>">
+          <input type="text" name="zip"> 
+          <input type="submit" value="I need this!">
+        </form>
       </div>
 
       <% end %>
