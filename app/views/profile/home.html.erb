@@ -29,11 +29,17 @@
   </div>
 </div>
 
-<!-- MOODS -->
 
 <!-- MOOD BUTTON as BUTTON -->
 <div class="ui stackable three column grid">
-<% @moods.each do |mood| %>
+<% if (morning..noon).cover? now %>
+<% moods = @moods[0..5]%>
+<% elsif (noon..evening).cover? now %>
+<% moods = @moods[6..12]%>
+<% elsif (night..tomorrow).cover? now  %>
+<% moods = @moods[12..19]%>
+  <%end%>
+<% moods.each do |mood| %>
   <div class="column">
     <div class="ui special cards">
       <div class="ui centered card">
@@ -54,8 +60,8 @@
 <%end%>
 </div>
 
-<!-- FOODS RECOMMENDATIONS -->
 
+<!-- FOODS RECOMMENDATIONS -->
 
 
 <% if @recommendations %>
