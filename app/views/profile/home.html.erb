@@ -34,9 +34,9 @@
 <% if (morning..noon).cover? now %>
 <% moods = @moods[0..5]%>
 <% elsif (noon..evening).cover? now %>
-<% moods = @moods[6..12]%>
+<% moods = @moods[6..11]%>
 <% elsif (night..tomorrow).cover? now  %>
-<% moods = @moods[12..19]%>
+<% moods = @moods[12..17]%>
   <%end%>
 <% moods.each do |mood| %>
   <div class="column">
