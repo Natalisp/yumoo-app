@@ -19,7 +19,7 @@
       <% elsif (evening..night).cover? now  %>
       evening,
       <% elsif (night..tomorrow).cover? now  %>
-      night, 
+      night,
       <% end%> eh?
       </h1>
       <h2 class="regular-text"><%= "Feeling like a #{current_user.current_mood.name}?" if current_user.current_mood %></h2>
@@ -76,7 +76,7 @@
           <%= @recommendations[0].rating %>
         </span>
       </h1>
-      
+
       <h3>Do whatever you want when you want to.</h3>
 
       <div class="content">

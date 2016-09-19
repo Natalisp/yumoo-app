@@ -13,6 +13,10 @@ class RestaurantsController < ApplicationController
     ActiveRecord::Base.connection.execute(sql)
     #***************************************#
 
+    #persist zip
+    current_user.zip = params[:zip]
+    current_user.save
+
     ###restaurants from the scraper
     @message = Scraper.new.scrape_it(params[:food_item], params[:zip])
     ###restaurants from Google api
