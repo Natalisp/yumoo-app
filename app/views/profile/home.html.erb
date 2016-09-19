@@ -77,7 +77,7 @@
         </span>
       </h1>
 
-      <h3><%=Pun.where('mood_id = ?',current_user.current_mood_id).sample.content%></h3>
+      <h3><%=Pun.all.sample.content%></h3>
 
       <div class="content">
         <form method = "POST" action = '/restaurants'>
