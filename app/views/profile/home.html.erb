@@ -19,7 +19,7 @@
       <% elsif (evening..night).cover? now  %>
       evening,
       <% elsif (night..tomorrow).cover? now  %>
-      night, 
+      night,
       <% end%> eh?
       </h1>
       <h2 class="regular-text"><%= "Feeling like a #{current_user.current_mood.name}?" if current_user.current_mood %></h2>
@@ -76,7 +76,7 @@
           <%= @recommendations[0].rating %>
         </span>
       </h1>
-      
+
       <h3>Do whatever you want when you want to.</h3>
 
       <div class="content">
@@ -119,14 +119,14 @@
             <i class="marker icon"></i>
             <input type="text" placeholder="your zipcode">
             <button class="mini ui orange right labeled icon button">
-              <i class="arrow right icon"></i>  
+              <i class="arrow right icon"></i>
             </button>
           </div>
         </p> -->
         <form method = "POST" action = '/restaurants'>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           <input type="hidden" name="food_item", value="<%= r.food.name %>">
-          <input type="text" name="zip"> 
+          <input type="text" name="zip", value="<%= current_user.zip %>"> 
           <input type="submit" value="I need this!">
         </form>
       </div>
