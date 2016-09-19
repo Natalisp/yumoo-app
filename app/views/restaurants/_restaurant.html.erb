@@ -1,7 +1,10 @@
+<tr>
+  <td><%= link_to restaurant.name, restaurant.link, target: '_blank', class: '' %></td>
+  <td><%= restaurant.format_price_range %></td>
+  <td><%= restaurant.format_category %></td>
+  <td><%= restaurant.format_phone %></td>
+  <td><%= restaurant.format_address %></td>
+  <td><%= restaurant.format_rating %></td>
+</tr>
+ 
 
-<div class = "restaurants">
-<p>
-  <%= link_to restaurant.name, restaurant.link, target: '_blank' %><br>
-  <%= restaurant.print_it_all %>
-</p>
-</div>

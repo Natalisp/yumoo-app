@@ -1,3 +1,15 @@
-<% @restaurants.each do |restaurant|%>
-<%= render partial: "/restaurants/restaurant", locals: {restaurant: restaurant} %>
-<% end %>
+<table class="ui inverted blue table">
+  <thead>
+    <tr>
+    <th>Restaurant</th>
+    <th>Price Range</th>
+    <th>Category</th>
+    <th>Phone</th>
+    <th>Address</th>
+    <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @restaurants %>
+  </tbody>
+</table>
