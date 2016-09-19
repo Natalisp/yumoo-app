@@ -10,7 +10,7 @@
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
-            <i class="user icon"></i>
+            <i class="mail icon"></i>
             <%= f.email_field :email, placeholder: "email", autofocus: true %>
           </div>
         </div>
@@ -33,9 +33,7 @@
 
       </div>
 
-      <div class="actions ui fluid large teal submit button">
-        <%= f.submit "Log in" %>
-      </div>
+      <%= f.submit 'Login', class: "actions ui fluid large blue submit button"%>
     <% end %>
 
     <div class="ui message">
@@ -43,3 +41,16 @@
     </div>
   </div>
 </div>
+
+<style type="text/css">
+  .column {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  form .input {
+    /*border: 1px soild red;*/
+    width: 100% !important;
+    margin-bottom: 1em;
+  }
+</style>
