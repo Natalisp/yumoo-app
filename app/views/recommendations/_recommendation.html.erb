@@ -9,6 +9,12 @@
     <div class="ui star rating icon" data-rating="<%= recommendation.rating.round %>" data-max-rating="5">
       <% recommendation.rating.round.times do |i| %>
         <i class="icon active"></i>
+        <%= button_to '', { controller: 'recommendations', action: 'rate', method: 'post', params: {score: i + 1, r_id: recommendation.id }}, style: 'opacity: 0; position: relative; right: 1em;' %>
+      <% end %>
+
+      <% (5 - recommendation.rating.round).times do |i| %>
+        <i class="icon"></i>
+        <%= button_to '', { controller: 'recommendations', action: 'rate', method: 'post', params: {score: recommendation.rating.round + i + 1, r_id: recommendation.id }}, style: 'opacity: 0; position: relative; right: 1em;' %>
       <% end %>
     </div>
   </td>
