@@ -24,7 +24,7 @@ $('.ui.sidebar').sidebar({
 
 $('.accordion').accordion({
   selector: {
-    trigger: '.title .icon'
+    trigger: '.title p'
   }
 });
 
@@ -32,6 +32,7 @@ $('.special.cards .image').dimmer({
   on: 'hover'
 });
 
+$('.ui.sticky').sticky();
 
 // $('.ui.modal').modal('attach events', '.modal-button', 'show');
-$('.ui.modal').modal('show');
+// $('.ui.modal').modal({inverted: false}).modal('show');

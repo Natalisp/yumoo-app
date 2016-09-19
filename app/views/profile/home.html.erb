@@ -1,38 +1,39 @@
-<div class="container">
+<div class="ui container">
 
-<h3>Welcome to Yumoo, <%= @user.username.capitalize %>!</h3>
-<h4><%= "Your current mood is: #{current_user.current_mood.name}" if current_user.current_mood %></h4>
+<div class="row">
+  <div class="column">
+    <div class="ui welcome-message">
+      <h1 class="ui header">Welcome <%= @user.username.capitalize %>!
+      Beautiful <%= Time.now.strftime("%A")%>
+      <% now = Time.now
+      today = Date.today.to_time
+      morning = today.beginning_of_day
+      noon = today.noon
+      evening = today.change( hour: 17 )
+      night = today.change( hour: 20 )
+      tomorrow = today.tomorrow
+      if (morning..noon).cover? now %>
+      morning 
+      <% elsif (noon..evening).cover? now  %>
+      afternoon
+      <% elsif (evening..night).cover? now  %>
+      evening
+      <% elsif (night..tomorrow).cover? now  %>
+      night  
+      <% end%>
+       ,eh?
+      </h1>
+      <h2 class="regular-text"><%= "Feeling like a #{current_user.current_mood.name}?" if current_user.current_mood %></h2>
 
-<h6 class="regular-text">It's <%= Time.now.strftime("%A")%>
-<% now = Time.now
-today = Date.today.to_time
-morning = today.beginning_of_day
-noon = today.noon
-evening = today.change( hour: 17 )
-night = today.change( hour: 20 )
-tomorrow = today.tomorrow
-if (morning..noon).cover? now %>
-morning 
-<% elsif (noon..evening).cover? now  %>
-afternoon
-<% elsif (evening..night).cover? now  %>
-evening
-<% elsif (night..tomorrow).cover? now  %>
-night</h6>  
-<h6 class="regular-text">What do you feel like?</h6>
+    </div>
+  </div>
+</div>
 
 <!-- MOODS -->
 
 <!-- MOOD BUTTON as BUTTON -->
 <div class="ui stackable three column grid">
-<% if (morning..noon).cover? now %>
-<% moods = @moods[0..5]%>
-<% elsif (noon..evening).cover? now %>
-<% moods = @moods[6..12]%>
-<% elsif (night..tomorrow).cover? now  %>
-<% moods = @moods[12..19]%>
-  <%end%>
-<% moods.each do |mood| %>
+<% @moods.each do |mood| %>
   <div class="column">
     <div class="ui special cards">
       <div class="ui centered card">
@@ -51,7 +52,6 @@ night</h6>
     </div>
   </div>
 <%end%>
-<% end%>
 </div>
 
 <!-- FOODS RECOMMENDATIONS -->
@@ -61,7 +61,6 @@ night</h6>
 <% if @recommendations %>
   <!-- main recommendation -->
   <div class="ui modal">
-    <i class="close icon"></i>
     <div class="header">
       Recommendations for <%= current_user.current_mood.name %>
     </div>
@@ -82,7 +81,7 @@ night</h6>
             <input type="text" placeholder="your zipcode">
             <button class="mini ui orange right labeled icon button">
               <i class="arrow right icon"></i>
-              Get it
+              I need this!
             </button>
           </div>
         </p>
@@ -91,14 +90,14 @@ night</h6>
     </div>
 
     <!-- sub recommendations -->
-    <h3 class="ui text container" style="text-align:center;">People also liked</h3>
+    <h3 class="ui text container" style="text-align:center;">You may also like...</h3>
     <div class="ui styled accordion" style="margin: 0 auto;">
       <% @recommendations[1..@recommendations.length].each do |r| %>
       <div class="title">
 
-        <p><i class="dropdown icon"></i>
+        <p>
           <%= r.food.name %>
-          <span class="mini ui left labeled button" style="float: right" tabindex="0">
+          <span class="mini ui left labeled button" style="float: right; position: relative; bottom: 0.4em;" tabindex="0">
             <a class="ui basic right pointing label">
               rating
             </a>
@@ -116,7 +115,7 @@ night</h6>
             <input type="text" placeholder="your zipcode">
             <button class="mini ui orange right labeled icon button">
               <i class="arrow right icon"></i>
-              Get it
+              I need this!
             </button>
           </div>
         </p>
@@ -126,6 +125,11 @@ night</h6>
     </div>
   </div>
 
+  
+
+<% else%>
+  <h1>Select your mood to get food recommmendation</h1>
+  <h2>or hit the 'SURPRISE ME' button</h2>
 <% end %>
 
 </div>

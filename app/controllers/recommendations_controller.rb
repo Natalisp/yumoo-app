@@ -15,7 +15,7 @@ class RecommendationsController < ApplicationController
   end
 
   def index
-    @recommendation = Recommendation.all.sample
+    @recommendations = Recommendation.all
   end
 
   private
