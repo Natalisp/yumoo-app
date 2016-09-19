@@ -21,9 +21,13 @@ class RestaurantsController < ApplicationController
     # binding.pry
     @restaurants = Restaurant.all  #=> this instance variable will be directed to whatever view
     #needs to render the _restaurant.html.erb partial, currently 'restaurants/find.html.erb'
-    if !@message[1][:error].empty? && @restaurants.empty?
-        flash[:error] =  @message[1][:error]
-        redirect_to restaurants_path
+    # binding.pry
+    if @message[1][:error] == 0
+    else
+      if !@message[1][:error].empty? && @restaurants.empty?
+          flash[:error] =  @message[1][:error]
+          redirect_to restaurants_path
+      end
     end
   end
 
