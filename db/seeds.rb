@@ -54,32 +54,43 @@ def make_foods
   Food.create(name: 'La Marca Prosecco Champagne')
   Food.create(name: 'Black Truffle Tagliolini with Lobster')
   Food.create(name: 'Caviar Lobster Frittata')
+  Food.create(name: 'Mashrooms pastrami')
+  Food.create(name: 'Veggie Chips')
+  Food.create(name: 'Kale Chips')
+  Food.create(name: 'Frozen kefir')
 end
 
 def make_moods
   Mood.destroy_all
-  Mood.create(name: 'Mexicana Mama')
-  Mood.create(name: 'Hangover Cure')
+  Mood.create(name: 'Squirrel on Caffeine')
+  Mood.create(name: 'No more Whiskey in a Barn')
   Mood.create(name: 'Sleep No More')
   Mood.create(name: 'Guilty Pleasure')
   Mood.create(name: 'Skinny-B')
-  Mood.create(name: 'Chopsticks Sum')
+  Mood.create(name: 'Get it over with')
+
+  Mood.create(name: 'Get it over with')
+  Mood.create(name: 'Squirrel on Caffeine')
+  Mood.create(name: 'Underpaid Elf in Santa’s Sweatshop')
+  Mood.create(name: 'Godzilla on a Diet')
+  Mood.create(name: 'Headaches with a Chance of Puke')
+  Mood.create(name: 'Butter in Sahara')
+
+  Mood.create(name: 'Eating lobster in the Hamptons')
   Mood.create(name: 'Wine not?')
-  Mood.create(name: 'Caviar & Champagne Sil Vous Plait')
+  Mood.create(name: 'Caviar & Champagne')
+  Mood.create(name: 'Sloth on a Sunday')
+  Mood.create(name: 'Underpaid Elf in Santa’s Sweatshop')
+  Mood.create(name: 'Fish swimming in a Glacier')
 end
 
 def make_recommendations
-<<<<<<< HEAD
-  20.times do |i|
-    Recommendation.create(user_id: i+1, food_id: i+1, mood_id: i+1, rating:(1..5).to_a.sample)
-=======
   Recommendation.destroy_all
   50.times do
     Recommendation.create(
       food_id: Food.all.sample.id,
       mood_id: Mood.all.sample.id,
-      rating:(1..5).to_a.sample
-    )
+      rating:(1..5).to_a.sample )
   end
 end
 
@@ -96,7 +107,6 @@ def make_ratings
         'meh', 'so true',
       ].sample
     )
->>>>>>> 95eff7adddf0774a9b3c20d7469a37bbb17eb20a
   end
 end
 

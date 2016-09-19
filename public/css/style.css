@@ -80,11 +80,17 @@ body {
 ************************/
 
 .btn {
-    padding: 14px 24px;
+    padding: 4px 4px;
     border: 0 none;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
+    white-space: normal;
+    height: 200px;
+    width: 270px;
+    text-align: center;
+    margin: auto;
+
 }
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;

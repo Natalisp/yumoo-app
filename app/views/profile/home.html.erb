@@ -19,14 +19,20 @@ afternoon
 evening
 <% elsif (night..tomorrow).cover? now  %>
 night</h6>  
-<% end%>
 <h6 class="regular-text">What do you feel like?</h6>
 
 <!-- MOODS -->
 
 <!-- MOOD BUTTON as BUTTON -->
 <div class="ui stackable three column grid">
-<% @moods.each do |mood| %>
+<% if (morning..noon).cover? now %>
+<% moods = @moods[0..5]%>
+<% elsif (noon..evening).cover? now %>
+<% moods = @moods[6..12]%>
+<% elsif (night..tomorrow).cover? now  %>
+<% moods = @moods[12..19]%>
+  <%end%>
+<% moods.each do |mood| %>
   <div class="column">
     <div class="ui special cards">
       <div class="ui centered card">
@@ -45,6 +51,7 @@ night</h6>
     </div>
   </div>
 <%end%>
+<% end%>
 </div>
 
 <!-- FOODS RECOMMENDATIONS -->
@@ -119,11 +126,6 @@ night</h6>
     </div>
   </div>
 
-  
-
-<% else%>
-  <h1>Select your mood to get food recommmendation</h1>
-  <h2>or hit the 'SURPRISE ME' button</h2>
 <% end %>
 
 </div>
