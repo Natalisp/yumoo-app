@@ -49,7 +49,7 @@ class Google
     model_generator(restaurants)
   end
 
-  def get_the_link_phone(link_url)
+  def get_the_link(link_url)
     uri = URI(link_url)
     a = Net::HTTP.get(uri)
     link_hash = JSON.parse(a)
