@@ -130,20 +130,18 @@ def make_puns
   Pun.create(content: 'Looking to grab some nuts? Why nut? Climb a tree? Yes?Yes?Yes?Yes! God help us...', mood_id: 8)
   Pun.create(content: "It's coffee O'clock in Jitterburg!", mood_id: 8)
   Pun.create(content: 'Underpaid? Pry me a river!', mood_id: 9)
-  Pun.create(content: 'Underpaid? Pry me a river!', mood_id: 9)
+  Pun.create(content: 'Desserts? Byte me!', mood_id: 9)
   Pun.create(content: 'Is that thunder or are you hungry to see me?', mood_id: 10)
   Pun.create(content: 'Never again said no student ever.', mood_id: 11)
   Pun.create(content: 'Wilt not, buttercup.', mood_id: 12)
   Pun.create(content: "Don't be so shellfish!", mood_id: 13)
-  Pun.create(content: "Republican rallies always offer some white whine.", mood_id: 14)
-  Pun.create(content: "Caviar, hmmpf. That's just a fancy name for fish eggs, right?", mood_id: 15)
+  Pun.create(content: "Republican rallies: now with white whine.", mood_id: 14)
+  Pun.create(content: "Caviar, hmmpf! That's just a fancy name for fish eggs.", mood_id: 15)
   Pun.create(content: 'Zzzzzzeppole...', mood_id: 16)
   Pun.create(content: 'Underpaid? Pry me a river!', mood_id: 17)
+  Pun.create(content: 'Desserts? Byte me!', mood_id: 17)
   Pun.create(content: 'Let it go, let it goooooo....', mood_id: 18)
 
-
-  # Pun.create(content: "", mood_id: 14)
-  # Pun.create(content: '', mood_id: )
 end
 
 make_seeds
