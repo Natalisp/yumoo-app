@@ -4,6 +4,7 @@ def make_seeds
   make_moods
   make_recommendations
   make_ratings
+  make_puns
 end
 
 def make_users
@@ -62,25 +63,25 @@ end
 
 def make_moods
   Mood.destroy_all
-  Mood.create(name: 'Squirrel on Caffeine')
+  Mood.create(name: 'Squirrel on Caffeine')   #1
   Mood.create(name: 'No more Whiskey in a Barn')
-  Mood.create(name: 'Sleep No More')
+  Mood.create(name: 'Sleep No More')  #3
   Mood.create(name: 'Guilty Pleasure')
-  Mood.create(name: 'Skinny-B')
+  Mood.create(name: 'Skinny-B')     #5
   Mood.create(name: 'Get it over with')
 
-  Mood.create(name: 'Get it over with')
+  Mood.create(name: 'Get it over with')  #7
   Mood.create(name: 'Squirrel on Caffeine')
-  Mood.create(name: 'Underpaid Elf in Santa’s Sweatshop')
-  Mood.create(name: 'Godzilla on a Diet')
-  Mood.create(name: 'Headaches with a Chance of Puke')
+  Mood.create(name: 'Underpaid Elf in Santa’s Sweatshop') #9
+  Mood.create(name: 'Godzilla on a Diet')   #10
+  Mood.create(name: 'Headaches with a Chance of Puke')  #11
   Mood.create(name: 'Butter in Sahara')
 
-  Mood.create(name: 'Eating lobster in the Hamptons')
+  Mood.create(name: 'Eating lobster in the Hamptons') #13
   Mood.create(name: 'Wine not?')
-  Mood.create(name: 'Caviar & Champagne')
+  Mood.create(name: 'Caviar & Champagne')   #15
   Mood.create(name: 'Sloth on a Sunday')
-  Mood.create(name: 'Underpaid Elf in Santa’s Sweatshop')
+  Mood.create(name: 'Underpaid Elf in Santa’s Sweatshop')   #17
   Mood.create(name: 'Fish swimming in a Glacier')
 end
 
@@ -103,12 +104,46 @@ def make_ratings
       score:(1..5).to_a.sample,
       comment: [nil, 'Works for me everytime',
         'spot on!',
-        'not the best but..', 
+        'not the best but..',
         'meh', 'so true',
       ].sample
     )
   end
 end
 
+def make_puns
+  Pun.destroy_all
+  Pun.create(content: 'Looking to grab some nuts? Why nut? Climb a tree? Yes?Yes?Yes?Yes! God help us...', mood_id: 1)
+  Pun.create(content: "It's coffee O'clock in Jitterburg!", mood_id: 1)
+  Pun.create(content: "It's grape to see you!", mood_id: 2)
+  Pun.create(content: "Go against the grain. Ferment it.", mood_id: 2)
+  Pun.create(content: "You live in Seattle?", mood_id: 3)
+  Pun.create(content: "Last cup of tomorrow.", mood_id: 3)
+  Pun.create(content: "Getting guilty with it.", mood_id: 4)
+  Pun.create(content: "Orange you glad it's dipped in chocolate?", mood_id: 4)
+  Pun.create(content: "To bee or not to bee, Honey?", mood_id: 5)
+  Pun.create(content: "You like it Beetless? Try Strawberry Salads Forever.", mood_id: 5)
+  Pun.create(content: "I'm partial to render.", mood_id: 6)
+  Pun.create(content: "Sticking with it requires True Grits", mood_id: 6)
+  Pun.create(content: "I'm partial to render.", mood_id: 7)
+  Pun.create(content: "Sticking with it requires True Grits", mood_id: 7)
+  Pun.create(content: 'Looking to grab some nuts? Why nut? Climb a tree? Yes?Yes?Yes?Yes! God help us...', mood_id: 8)
+  Pun.create(content: "It's coffee O'clock in Jitterburg!", mood_id: 8)
+  Pun.create(content: 'Underpaid? Pry me a river!', mood_id: 9)
+  Pun.create(content: 'Underpaid? Pry me a river!', mood_id: 9)
+  Pun.create(content: 'Is that thunder or are you hungry to see me?', mood_id: 10)
+  Pun.create(content: 'Never again said no student ever.', mood_id: 11)
+  Pun.create(content: 'Wilt not, buttercup.', mood_id: 12)
+  Pun.create(content: "Don't be so shellfish!", mood_id: 13)
+  Pun.create(content: "Republican rallies always offer some white whine.", mood_id: 14)
+  Pun.create(content: "Caviar, hmmpf. That's just a fancy name for fish eggs, right?", mood_id: 15)
+  Pun.create(content: 'Zzzzzzeppole...', mood_id: 16)
+  Pun.create(content: 'Underpaid? Pry me a river!', mood_id: 17)
+  Pun.create(content: 'Let it go, let it goooooo....', mood_id: 18)
+
+
+  # Pun.create(content: "", mood_id: 14)
+  # Pun.create(content: '', mood_id: )
+end
 
 make_seeds
