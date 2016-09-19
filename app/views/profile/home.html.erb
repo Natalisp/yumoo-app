@@ -35,7 +35,7 @@
 <% moods = @moods[0..5]%>
 <% elsif (noon..evening).cover? now %>
 <% moods = @moods[6..11]%>
-<% elsif (night..tomorrow).cover? now  %>
+<% elsif ((evening..night).cover? now )||( (night..tomorrow).cover? now )%>
 <% moods = @moods[12..17]%>
   <%end%>
 <% moods.each do |mood| %>
@@ -108,7 +108,7 @@
 
         <p>
           <%= r.food.name %>
-          <span class="mini ui left labeled button" style="float: right; position: relative; bottom: 0.4em;" tabindex="0">
+          <span class="mini uif left labeled button" style="float: right; position: relative; bottom: 0.4em;" tabindex="0">
             <a class="ui basic right pointing label">
               rating
             </a>
