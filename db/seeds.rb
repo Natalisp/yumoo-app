@@ -58,14 +58,16 @@ end
 
 def make_moods
   Mood.destroy_all
-  Mood.create(name: 'Mexicana Mama')
-  Mood.create(name: 'Hangover Cure')
-  Mood.create(name: 'Sleep No More')
-  Mood.create(name: 'Guilty Pleasure')
-  Mood.create(name: 'Skinny-B')
-  Mood.create(name: 'Chopsticks Sum')
-  Mood.create(name: 'Wine not?')
-  Mood.create(name: 'Caviar & Champagne Sil Vous Plait')
+  Mood.create(name: 'Celebratory!')
+  Mood.create(name: 'Need a Jolt')
+  Mood.create(name: 'Under the Weather')
+  Mood.create(name: 'Freezing')
+  Mood.create(name: 'Boiling')
+  Mood.create(name: 'Hungover')
+  Mood.create(name: 'In the Mood for Love')
+  Mood.create(name: 'Stressed')
+  Mood.create(name: 'Depressed')
+  Mood.create(name: 'Netflix and Chill')
 end
 
 def make_recommendations
@@ -88,7 +90,7 @@ def make_ratings
       score:(1..5).to_a.sample,
       comment: [nil, 'Works for me everytime',
         'spot on!',
-        'not the best but..', 
+        'not the best but..',
         'meh', 'so true',
       ].sample
     )

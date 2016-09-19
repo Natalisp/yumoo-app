@@ -1,3 +1,11 @@
-<% @restaurants.each do |restaurant|%>
-<%= render partial: "/restaurants/restaurant", locals: {restaurant: restaurant} %>
+<h1>Google Restaurants</h1>
+
+<% @google_restaurants.each do |restaurant|%>
+  <%= render partial: "/restaurants/restaurant", locals: {restaurant: restaurant} %>
+<% end %>
+<br></br>
+<h1>Yelp Restaurants</h1>
+
+<% @google_restaurants.each do |restaurant|%>
+  <%= render partial: "/restaurants/restaurant", locals: {restaurant: restaurant} %>
 <% end %>

@@ -15,6 +15,14 @@ class Restaurant < ApplicationRecord
   #   Restaurant.all
   # end
 
+  def self.google_restaurants
+    Restaurant.all.find_all {|restaurant| restaurant.source == "Google"}
+  end
+
+  def self.yelp_restaurants
+    Restaurant.all.find_all {|restaurant| restaurant.source == "Yelp"}
+  end
+
   def print_it_all
    "#{format_category}#{format_rating}#{format_price_range}#{format_address}#{format_phone}"
   end
