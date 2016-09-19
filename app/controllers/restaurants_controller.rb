@@ -23,7 +23,8 @@ class RestaurantsController < ApplicationController
     google_item = params[:food_item].gsub(/\s/,"+")
     Google.new.call(params[:zip],google_item)
     # binding.pry
-    @restaurants = Restaurant.all  #=> this instance variable will be directed to whatever view
+    @google_restaurants = Restaurant.google_restaurants 
+    @yelp_restaurants = Restaurant.yelp_restaurants 
     #needs to render the _restaurant.html.erb partial, currently 'restaurants/find.html.erb'
     # binding.pry
     if @message[1][:error] == 0
