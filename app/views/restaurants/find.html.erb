@@ -1,15 +1,53 @@
-<table class="ui table">
-  <thead>
-    <tr>
-    <th>Restaurant</th>
-    <th>Price Range</th>
-    <th>Category</th>
-    <th>Phone</th>
-    <th>Address</th>
-    <th>Restaurant Rating</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render @restaurants %>
-  </tbody>
-</table>
+<% if !@yelp_restaurants.empty? %>
+  <table class="ui table">
+    <thead>
+      <tr>
+      <th>Yelp Restaurants </th>
+      <th>Price Range</th>
+      <th>Category</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Restaurant Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @yelp_restaurants %>
+    </tbody>
+  <% if !@google_restaurants.empty? %>
+    <thead>
+      <tr>
+      <th>Google Restaurants</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @google_restaurants  %>
+    </tbody>
+  <% end %>
+  </table>
+<% end %>
+
+<br />
+
+
+<%# <% if !@google_restaurants.empty? %1> %>
+<%#   <table class="ui table"> %>
+<%#     <thead> %>
+<%#       <tr> %>
+<%#       <th>Google Restaurants </th> %>
+<%#       <th>Price Range</th> %>
+<%#       <th>Category</th> %>
+<%#       <th>Phone</th> %>
+<%#       <th>Address</th> %>
+<%#       <th>Restaurant Rating</th> %>
+<%#       </tr> %>
+<%#     </thead> %>
+<%#     <tbody> %>
+<%#       <%= render @google_restaurants %1> %>
+<%#     </tbody> %>
+<%#   </table> %>
+<%# <% end %1> %>
