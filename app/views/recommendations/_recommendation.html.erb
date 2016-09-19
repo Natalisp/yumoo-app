@@ -1,20 +1,15 @@
-<div class="container">
-
-  <table>
-    <tr>
-      <th>Food</th>
-      <th>Mood</th>
-      <th>Rating</th>
-    </tr>
-
-    <% @data.each do |recommendation| %>
-      <tr>
-        <td><%= recommendation.food.name %></td>
-        <td><%= recommendation.mood.name %></td>
-        <td><%= recommendation.rating %></td>
-      </tr>
-    <% end %>
-
-  </table>
-
-</div>
+<tr>
+  <td class="single line">
+    <%= recommendation.food.name %>
+  </td>
+  <td class="single line">
+    <%= recommendation.mood.name %>
+  </td>
+  <td>
+    <div class="ui star rating icon" data-rating="<%= recommendation.rating.round %>" data-max-rating="5">
+      <% recommendation.rating.round.times do |i| %>
+        <i class="icon active"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>

@@ -4,9 +4,9 @@
     <title>Yumoo</title>
     <%= csrf_meta_tags %>
     <!-- APP CSS -->
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <!-- SEMANTIC UI CSS -->
-    <%= stylesheet_link_tag    'semantic.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'semantic.min', media: 'all', 'data-turbolinks-track': 'reload' %>
     <!-- custom styles -->
     <link rel="stylesheet" type="text/css" href="css/style.css"> 
   </head>
@@ -19,16 +19,16 @@
     <div class="ui bottom attached segment pushable">
       <div class="ui inverted labeled icon left inline vertical sidebar menu">
         <a class="item">
-          <i class="home icon"></i>
-          Home
+          <i class="history icon"></i>
+          History
         </a>
         <a class="item">
-          <i class="block layout icon"></i>
-          Topics
+          <i class="add circle icon"></i>
+          Contribute
         </a>
         <a class="item">
-          <i class="smile icon"></i>
-          Friends
+          <i class="search icon"></i>
+          Search<br>Restaurants
         </a>
       </div>
       <div class="pusher">
@@ -46,7 +46,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <script type="text/javascript">
-      $('.ui.modal').modal('show');
+      // $('.ui.modal').modal({inverted: false}).modal('show');
+      $('.ui.modal').modal({blurring: true}).modal('show');
     </script>
   </body>
 </html>
