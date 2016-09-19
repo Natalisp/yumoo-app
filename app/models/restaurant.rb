@@ -92,4 +92,11 @@ class Restaurant < ApplicationRecord
     self.phone.nil? ? "" : "#{self.phone}"
   end
 
+  def self.google_restaurants
+    Restaurant.all.find_all {|restaurant| restaurant.source == "Google"}
+  end
+
+  def self.yelp_restaurants
+    Restaurant.all.find_all {|restaurant| restaurant.source == "Yelp"}
+  end
 end
