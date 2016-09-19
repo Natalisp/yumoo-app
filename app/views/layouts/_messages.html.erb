@@ -1,3 +1,21 @@
-<%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
-<%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
-<%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+<% if flash[:error] %>
+  <div class="ui negative message">
+    <i class="close icon"></i>
+    <%= content_tag(:div, flash[:error], :id => "flash_error") %>
+  </div>
+<% end %>
+
+
+<% if flash[:notice] %>
+  <div class="ui positive message">
+    <i class="close icon"></i>
+    <%= content_tag(:div, flash[:notice], :id => "flash_notice") %>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="ui red message">
+    <i class="close icon"></i>
+    <%= content_tag(:div, flash[:alert], :id => "flash_alert") %>
+  </div>
+<% end %>

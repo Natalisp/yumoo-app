@@ -34,5 +34,9 @@ $('.special.cards .image').dimmer({
 
 $('.ui.sticky').sticky();
 
+$('.message .close').on('click', function() {
+  $(this).closest('.message').transition('fade')
+});
+
 // $('.ui.modal').modal('attach events', '.modal-button', 'show');
 // $('.ui.modal').modal({inverted: false}).modal('show');
