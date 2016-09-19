@@ -13,6 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+.pusher {
+  padding-top: 2em;
+  background: #eee !important;
+}
+
+.welcome-message {
+  margin-bottom: 2em;
+}
+
 .ui.modal {
   padding-bottom: 3em;
 }
@@ -24,7 +34,7 @@
   border-radius: 5px;
   text-align: center;
   color: white;
-  background-image: linear-gradient(to right bottom, rgba(255,52,16, 1), rgba(0,255,0,0.2));
+  background-image: linear-gradient(to right bottom, rgba(255,52,56, 1), rgba(80,55,180,0.2));
 }
 
 .ui.stackable.column.grid {
