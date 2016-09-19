@@ -13,16 +13,22 @@ class RestaurantsController < ApplicationController
     ActiveRecord::Base.connection.execute(sql)
     #***************************************#
 
-
     ###restaurants from the scraper
-    Scraper.new.scrape_it(params[:food_item], params[:zip])
-
+    @message = Scraper.new.scrape_it(params[:food_item], params[:zip])
     ###restaurants from Google api
     google_item = params[:food_item].gsub(/\s/,"+")
     Google.new.call(params[:zip],google_item)
     # binding.pry
     @restaurants = Restaurant.all  #=> this instance variable will be directed to whatever view
     #needs to render the _restaurant.html.erb partial, currently 'restaurants/find.html.erb'
+    # binding.pry
+    if @message[1][:error] == 0
+    else
+      if !@message[1][:error].empty? && @restaurants.empty?
+          flash[:error] =  @message[1][:error]
+          redirect_to restaurants_path
+      end
+    end
   end
 
 end
