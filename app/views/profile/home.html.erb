@@ -1,0 +1,150 @@
+<div class="ui container">
+
+<div class="row">
+  <div class="column">
+    <div class="ui welcome-message">
+      <h1 class="ui header">Welcome, <%= @user.username.capitalize %>!
+      Beautiful <%= Time.now.strftime("%A")%>
+      <% now = Time.now
+      today = Date.today.to_time
+      morning = today.beginning_of_day
+      noon = today.noon
+      evening = today.change( hour: 17 )
+      night = today.change( hour: 20 )
+      tomorrow = today.tomorrow
+      if (morning..noon).cover? now %>
+      morning,
+      <% elsif (noon..evening).cover? now  %>
+      afternoon,
+      <% elsif (evening..night).cover? now  %>
+      evening,
+      <% elsif (night..tomorrow).cover? now  %>
+      night,
+      <% end%> eh?
+      </h1>
+      <h2 class="regular-text"><%= "Feeling like a #{current_user.current_mood.name}?" if current_user.current_mood %></h2>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- MOOD BUTTON as BUTTON -->
+<div class="ui stackable three column grid">
+<% if (morning..noon).cover? now %>
+<% moods = @moods[0..5]%>
+<% elsif (noon..evening).cover? now %>
+<% moods = @moods[6..12]%>
+<% elsif (night..tomorrow).cover? now  %>
+<% moods = @moods[12..19]%>
+  <%end%>
+<% moods.each do |mood| %>
+  <div class="column">
+    <div class="ui special cards">
+      <div class="ui centered card">
+        <div class="blurring dimmable image">
+          <h3><%= mood.name %></h3>
+          <div class="ui dimmer">
+            <div class="content">
+              <div class="center">
+                <%= button_to 'select', { controller: 'profile', action: 'home',
+        method: 'post', params: { mood_id: mood.id } }, class: 'ui inverted button' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<%end%>
+</div>
+
+
+<!-- FOODS RECOMMENDATIONS -->
+
+
+<% if @recommendations %>
+  <!-- main recommendation -->
+  <div class="ui modal">
+    <div class="header">
+      Recommendations for <%= current_user.current_mood.name %>
+    </div>
+
+    <div class="ui main-recommendation">
+      <h1 class="ui inverted"><%= @recommendations[0].food.name %>
+        <span class="mini circular ui icon button" style="float: right; background: white;">
+          <%= @recommendations[0].rating %>
+        </span>
+      </h1>
+
+      <h3><%=Pun.where('mood_id = ?',current_user.current_mood_id).sample.content%></h3>
+
+      <div class="content">
+        <form method = "POST" action = '/restaurants'>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <p class="transition visible" style="display: block !important;">
+            <input type="hidden" name="food_item", value="<%= @recommendations[0].food.name %>">
+            <div class="mini ui right action left icon input">
+              <i class="marker icon"></i>
+              <input type="text" name="zip" placeholder="your zipcode" value="<%= current_user.zip if current_user.zip %>">
+              <button type="submit" class="mini ui orange right labeled icon button">
+                <i class="arrow right icon"></i>
+                I need this!
+              </button>
+            </div>
+          </p>
+        </form>
+
+
+      </div>
+
+    </div>
+
+    <!-- sub recommendations -->
+    <h3 class="ui text container" style="text-align:center;">You may also like...</h3>
+    <div class="ui styled accordion" style="margin: 0 auto;">
+      <% @recommendations[1..@recommendations.length].each do |r| %>
+      <div class="title">
+
+        <p>
+          <%= r.food.name %>
+          <span class="mini ui left labeled button" style="float: right; position: relative; bottom: 0.4em;" tabindex="0">
+            <a class="ui basic right pointing label">
+              rating
+            </a>
+            <span class="right mini ui button">
+              <%= r.rating %>
+            </span>
+          </span>
+        </p>
+      </div>
+
+      <div class="content extra" style="text-align: center;">
+
+        <form method = "POST" action = '/restaurants'>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <p class="transition visible" style="display: block !important;">
+            <input type="hidden" name="food_item", value="<%= r.food.name %>">
+            <div class="mini ui right action left icon input">
+              <i class="marker icon"></i>
+              <input type="text" name="zip" placeholder="your zipcode" value="<%= current_user.zip if current_user.zip %>">
+              <button type="submit" class="mini ui orange right labeled icon button">
+                <i class="arrow right icon"></i>
+                I need this!
+              </button>
+            </div>
+          </p>
+        </form>
+
+      </div>
+
+      <% end %>
+    </div>
+  </div>
+
+<% else%>
+  <!-- <h1>Select your mood to get food recommmendation</h1>
+  <h2>or hit the 'SURPRISE ME' button</h2> -->
+<% end %>
+
+</div>
