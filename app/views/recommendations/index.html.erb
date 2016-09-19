@@ -1,15 +1,42 @@
-<h3>Have Fun and Rate</h3>
+<div class="row">
+  <div class="column">
+    <div class="ui welcome-message">
+      <h2 class="ui header">Have Fun and Rate
+      </h2>
+    </div>
+  </div>
+</div>
 
-<table>
-  <tr>
+<table class="ui celled padded table">
+  <thead>
     <th>Food</th>
     <th>Mood</th>
     <th>Rating</th>
-  </tr>
-
-  <tr>
-    <td><%= @recommendation.food.name %></td>
-    <td><%= @recommendation.mood.name %></td>
-    <td><button>Rate</button></td>
-  </tr>
+  </tr></thead>
+  <tbody>
+    <%= render @recommendations || "There are no recommendations. Make aome if you'd like." %>
+  </tbody>
 </table>
+
+<div class="ui orange inverted segment">
+  <div class="ui orange inverted form">
+    <div class="three fields">
+      <div class="field">
+        <input placeholder="First Name" type="text">
+      </div>
+      <div class="field">
+        <input placeholder="Last Name" type="text">
+      </div>
+      <div class="field">
+        <div class="ui submit button">Submit</div>
+      </div>
+    </div>  
+  </div>
+</div>
+
+
+<style type="text/css">
+  .ui.orange.inverted.segment {
+  
+  }
+</style>

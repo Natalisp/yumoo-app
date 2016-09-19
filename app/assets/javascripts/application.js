@@ -32,6 +32,7 @@ $('.special.cards .image').dimmer({
   on: 'hover'
 });
 
+$('.ui.sticky').sticky();
 
 // $('.ui.modal').modal('attach events', '.modal-button', 'show');
 // $('.ui.modal').modal({inverted: false}).modal('show');
