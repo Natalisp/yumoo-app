@@ -95,3 +95,10 @@ body {
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
 }
+
+.footer {
+    padding: 1.2em 0;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    text-align:center;
+}
