@@ -9,8 +9,8 @@ class ProfileController < ApplicationController
     # @recommendation = current_user.recommend_food(current_user.moods.last) if current_user.moods.last
     if params[:mood_id]
       mood = Mood.find_by(id: params[:mood_id])
+      params[:mood_id] = nil
       if mood
-        # byebug
         @user.update(current_mood_id: mood.id)
         @recommendations = Recommendation.recommend(mood, 5)
       end

@@ -42,6 +42,7 @@ class Google
       hash[:address] = result["vicinity"]
       hash[:price] = result["price_level"]
       hash[:link] = get_the_link("https://maps.googleapis.com/maps/api/place/details/json?placeid=#{result["place_id"]}&key=AIzaSyDrPnWTc2lB5VL__4mFy6fU6kFCOVIU0KU")
+      hash[:phone] = @phone
       hash[:source] = "Google"
       hash
     end
@@ -52,7 +53,12 @@ class Google
     uri = URI(link_url)
     a = Net::HTTP.get(uri)
     link_hash = JSON.parse(a)
+    @phone = link_hash["result"]["formatted_phone_number"]
     link_hash["result"]["url"]
+  end
+
+  def get_the_phone
+
   end
 
   def model_generator(restaurants)

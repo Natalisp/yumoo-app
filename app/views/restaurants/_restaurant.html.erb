@@ -1,7 +1,16 @@
+<tr>
+  <td><strong><%= link_to restaurant.name, restaurant.link, target: '_blank', style: 'color: black' %></strong> <i class="ui icon tiny external" style="position:relative; top: -1em;"></i></td>
+  <td><%= restaurant.format_price_range %></td>
+  <td><%= restaurant.format_category %></td>
+  <td><%= restaurant.format_phone || "N/A" %></td>
+  <td><%= restaurant.format_address %></td>
+  <td>
+    <div class="ui star rating icon" data-rating="<%= restaurant.format_rating.to_i %>" data-max-rating="5">
+      <% restaurant.format_rating.to_i.times do |i| %>
+        <i class="icon tiny active"></i>
+      <% end %>
+    </div>
+  </td>
+</tr>
+ 
 
-<div class = "restaurants">
-<p>
-  <%= link_to restaurant.name, restaurant.link, target: '_blank' %><br>
-  <%= restaurant.print_it_all %>
-</p>
-</div>

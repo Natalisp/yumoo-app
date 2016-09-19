@@ -19,7 +19,7 @@
       <% elsif (evening..night).cover? now  %>
       evening,
       <% elsif (night..tomorrow).cover? now  %>
-      night, 
+      night,
       <% end%> eh?
       </h1>
       <h2 class="regular-text"><%= "Feeling like a #{current_user.current_mood.name}?" if current_user.current_mood %></h2>
@@ -76,20 +76,26 @@
           <%= @recommendations[0].rating %>
         </span>
       </h1>
-      
+
       <h3>Do whatever you want when you want to.</h3>
 
       <div class="content">
-        <p class="transition visible" style="display: block !important;">
-          <div class="mini ui right action left icon input">
-            <i class="marker icon"></i>
-            <input type="text" placeholder="your zipcode">
-            <button class="mini ui orange right labeled icon button">
-              <i class="arrow right icon"></i>
-              I need this!
-            </button>
-          </div>
-        </p>
+        <form method = "POST" action = '/restaurants'>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <p class="transition visible" style="display: block !important;">
+            <input type="hidden" name="food_item", value="<%= @recommendations[0].food.name %>">
+            <div class="mini ui right action left icon input">
+              <i class="marker icon"></i>
+              <input type="text" name="zip" placeholder="your zipcode" value="<%= current_user.zip if current_user.zip %>">
+              <button type="submit" class="mini ui orange right labeled icon button">
+                <i class="arrow right icon"></i>
+                I need this!
+              </button>
+            </div>
+          </p>
+        </form>
+
+        
       </div>
 
     </div>
@@ -114,27 +120,31 @@
       </div>
 
       <div class="content extra" style="text-align: center;">
-        <!-- <p class="transition visible" style="display: block !important;">
-          <div class="mini ui right action left icon input" >
-            <i class="marker icon"></i>
-            <input type="text" placeholder="your zipcode">
-            <button class="mini ui orange right labeled icon button">
-              <i class="arrow right icon"></i>  
-            </button>
-          </div>
-        </p> -->
+
         <form method = "POST" action = '/restaurants'>
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-          <input type="hidden" name="food_item", value="<%= r.food.name %>">
-          <input type="text" name="zip"> 
-          <input type="submit" value="I need this!">
+          <p class="transition visible" style="display: block !important;">
+            <input type="hidden" name="food_item", value="<%= r.food.name %>">
+            <div class="mini ui right action left icon input">
+              <i class="marker icon"></i>
+              <input type="text" name="zip" placeholder="your zipcode" value="<%= current_user.zip if current_user.zip %>">
+              <button type="submit" class="mini ui orange right labeled icon button">
+                <i class="arrow right icon"></i>
+                I need this!
+              </button>
+            </div>
+          </p>
         </form>
+
       </div>
 
       <% end %>
     </div>
   </div>
 
+<% else%>
+  <!-- <h1>Select your mood to get food recommmendation</h1>
+  <h2>or hit the 'SURPRISE ME' button</h2> -->
 <% end %>
 
 </div>

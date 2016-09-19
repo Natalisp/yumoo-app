@@ -8,14 +8,13 @@
     <!-- SEMANTIC UI CSS -->
     <%= stylesheet_link_tag 'semantic.min', media: 'all', 'data-turbolinks-track': 'reload' %>
     <!-- custom styles -->
-    <link rel="stylesheet" type="text/css" href="css/style.css"> 
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
 
   <body>
     <header>
       <%= render 'layouts/nav' %>
     </header>
-
     <div class="ui bottom attached segment pushable">
       <div class="ui inverted labeled icon left inline vertical sidebar menu">
         <a class="item">
@@ -32,6 +31,8 @@
         </a>
       </div>
       <div class="pusher">
+        <%= render 'layouts/messages' %>
+        
         <div class="ui basic segment">
           <main> <%= yield %> </main>
         </div>
@@ -40,7 +41,7 @@
             Copyright &copy; Yumoo 2016
         </footer>
     </div>
-    
+
     <!-- JQUERY -->
     <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
     <!-- SEMANTIC UI JS -->

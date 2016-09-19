@@ -5,17 +5,26 @@
       <i class="sidebar icon"></i>
     </a>
     <a class="item active" href="\">
-      Home
+      <b>Yummoo</b>
     </a>
 
     <div class="right menu">
       <a class="ui item" style="position: relative;top: 0.5em;">
-        <div class="ui item">
-          <div class="ui transparent icon input">
-            <input type="text" placeholder="search food">
-            <i class="search link icon"></i>
+        <i class="ui marker green icon" style="position:relative; left: 1.5em;"></i>
+        <form method = "POST" action = '/restaurants'>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <div class="ui item">
+            <div class="ui transparent icon input">
+              <input type="text" name="zip" placeholder="zipcode" value="<%= current_user.zip if current_user.zip %>">
+              <input type="text"  name="food_item" placeholder="search food">
+              <button class="ui mini circular icon button" type="submit">
+                <i class="search link icon"></i>
+              </button>
+              <!-- <i class="search link icon"></i> -->
+            </div>
           </div>
-        </div>
+        </form>
+
         <%= button_to "logout", destroy_user_session_path, method: 'delete', class: 'mini ui button' %>
       </a>
     </div>

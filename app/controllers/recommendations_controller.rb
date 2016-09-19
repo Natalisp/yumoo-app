@@ -18,6 +18,19 @@ class RecommendationsController < ApplicationController
     @recommendations = Recommendation.all
   end
 
+  def rate
+    # rate here
+    if params[:score]
+      rating = Rating.find_or_create_by(
+        user_id: current_user.id,
+        recommendation_id: params[:r_id]
+      )
+      rating.update(score: params[:score]) if rating
+      flash[:notice] = "Your rating has been submitted. Thank you"
+    end
+    redirect_to recommendations_path
+  end
+
   private
     def recommendation_path
       params.require(:recommendation).permit(:food_id, :mood_id, :rating)

@@ -13,6 +13,10 @@ class RestaurantsController < ApplicationController
     ActiveRecord::Base.connection.execute(sql)
     #***************************************#
 
+    #persist zip
+    current_user.zip = params[:zip]
+    current_user.save
+
     ###restaurants from the scraper
     @message = Scraper.new.scrape_it(params[:food_item], params[:zip])
     ###restaurants from Google api
@@ -26,7 +30,7 @@ class RestaurantsController < ApplicationController
     else
       if !@message[1][:error].empty? && @restaurants.empty?
           flash[:error] =  @message[1][:error]
-          redirect_to restaurants_path
+          redirect_to root_path
       end
     end
   end
