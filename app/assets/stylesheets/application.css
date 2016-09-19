@@ -46,7 +46,7 @@ body {
 }
 
 .special.cards .card {
-  background-image: linear-gradient(to right bottom, rgba(255,252,216, 1), rgba(200,200,200,0.2)) !important;
+  background-image: linear-gradient(to right bottom, rgba(255,52,56, 1), rgba(80,55,180,0.2)) !important;
 }
 
 .special.cards .card .image {
